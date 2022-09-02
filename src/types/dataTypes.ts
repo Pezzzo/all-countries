@@ -7,6 +7,7 @@ export interface IDataTypes {
         common: string
     }
     languages: string[]
+    currencies: string[]
     flags: {
         png: string
     }

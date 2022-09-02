@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledLinkToMap, StyledP, StyledSpan } from '../../../common-styles/styled';
 import { IDataTypes } from '../../../types/dataTypes';
-import { getLanguages, getTimezones } from '../../../util/util';
+import { getLanguages, getTimezones, getCurrencies } from '../../../util/util';
 
 interface Icomponent {
   data: IDataTypes
@@ -19,6 +19,9 @@ const DetailCountryInfo = ({ data }: Icomponent) => {
       </StyledP>
       <StyledP>
         <StyledSpan>Languages: </StyledSpan>{getLanguages(data)}
+      </StyledP>
+      <StyledP>
+        <StyledSpan>Currencies: </StyledSpan>{getCurrencies(data)}
       </StyledP>
       <StyledP>
         <StyledSpan>Population: </StyledSpan>{data.population}

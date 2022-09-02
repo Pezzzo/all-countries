@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react';
-import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { getPartDataLocalStorage, getOpenedCountries } from '../../../localStorage/localStorage';
 import CustomLink from '../../ui/CustomLink/CustomLink';
-import { StyledHeader, NavWrapper, CounterWrapper, StyledP, StyledSpanAttempts } from './styled';
+import { StyledHeader, NavWrapper } from './styled';
 import { useDispatch } from 'react-redux';
 import { ActionTypes } from '../../../types/redusersTypes';
 
 const Header = () => {
-
-  const { loading } = useTypedSelector(state => state.fetch);
-  const { attemptsСount } = useTypedSelector(state => state.attempts);
 
   const dispatch = useDispatch();
 
@@ -34,14 +30,6 @@ const Header = () => {
             statistics
           </CustomLink>
         </NavWrapper>
-        {
-          loading ? '' :
-            <CounterWrapper>
-              <StyledP>
-                attempts: <StyledSpanAttempts>{attemptsСount}</StyledSpanAttempts>
-              </StyledP>
-            </CounterWrapper>
-        }
       </StyledHeader>
     </>
   );

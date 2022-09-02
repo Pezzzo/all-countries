@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react';
+import { PlayButton, ButtonsWrapper } from '../../../common-styles/styled';
+import {
+  CountriesList,
+  FlagsList,
+  StyledMain,
+  StyledPCounter,
+  CounterWrapper,
+  StyledSpan
+} from './styled';
 import CountriesFlags from '../../blocks/CountriesFlags/CountriesFlags';
 import CountriesName from '../../blocks/CountriesName/CountriesName';
 import Error from '../../blocks/Error/Error';
 import ModalCountryInfo from '../../blocks/ModalCountryInfo/ModalCountryInfo';
 import Button from '../../ui/Button/Button';
-import { CountriesList, FlagsList, StyledMain } from './styled';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { getPartData, getPartDataLocalStorage } from '../../../localStorage/localStorage';
-import { PlayButton } from '../../../common-styles/styled';
 
 
 const CountriesPage = () => {
@@ -17,8 +24,9 @@ const CountriesPage = () => {
   const { notSort } = useTypedSelector(state => state.notSort);
   const { sort } = useTypedSelector(state => state.sort);
   const { selectedCountry } = useTypedSelector(state => state.selectedCountry);
-  const { error } = useTypedSelector(state => state.fetch);
+  const { error, loading } = useTypedSelector(state => state.fetch);
   const { zeroAttempts } = useTypedSelector(state => state.zeroAttempts);
+  const { attemptsСount } = useTypedSelector(state => state.attempts);
 
   const dispatch = useDispatch();
 
@@ -30,14 +38,24 @@ const CountriesPage = () => {
 
   return error ? <Error error={error} /> : (
     <>
-      {
-        started === null || undefined ?
-          <PlayButton>
-            <Button clickHandler={() => getPartData(dispatch)}>play</Button>
-          </PlayButton>
-          :
-          ''
-      }
+      <ButtonsWrapper>
+        {
+          started === null || undefined ?
+            <PlayButton>
+              <Button clickHandler={() => getPartData(dispatch)}>play</Button>
+            </PlayButton>
+            :
+            null
+        }
+        {
+          loading ? null :
+            <CounterWrapper>
+              <StyledPCounter>
+               attempts: <StyledSpan>{attemptsСount}</StyledSpan>
+              </StyledPCounter>
+            </CounterWrapper>
+        }
+      </ButtonsWrapper>
       {
         zeroAttempts ?
           <div>

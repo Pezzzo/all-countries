@@ -12,8 +12,8 @@ ${normalize}
 }
 
 html {
-    height: 100%;
-    background-color: ${(props) => props.theme.colorGrey};
+    min-height: 100%;
+    background-color: ${(props) => props.theme.colorWhite};
   }
 
 body,
@@ -27,6 +27,8 @@ body {
   min-width: 320px;
   display: flex;
   flex-direction: column;
+  padding-left: 30px;
+  padding-right: 30px;
   font-weight:  ${(props) => props.theme.fontWeightDefault};
   max-width: ${(props) => props.theme.pageWidth};
   font-family: ${(props) => props.theme.fontFamily};

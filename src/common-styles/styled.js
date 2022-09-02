@@ -41,3 +41,7 @@ color: ${(props) => props.theme.colorDarkBlue};
   color: ${(props) => props.theme.colorRed};
 }
 `
+export const ButtonsWrapper = styled.div`
+display: flex;
+align-items: center;
+`

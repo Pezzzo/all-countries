@@ -7,7 +7,7 @@ line-height: 20px;
 padding: 4px 8px;
 margin-bottom: 4px;
 font-weight: 600;
-background-color: ${(props) => props.theme.colorGrey};
+background-color: ${(props) => props.theme.colorWhite};
 `
 export const StyledLi = styled.li`
 display: flex;

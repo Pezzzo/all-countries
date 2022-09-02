@@ -13,6 +13,19 @@ const shuffleArray = (data: IDataTypes[]) => {
   return data;
 };
 
+const getCurrencies = (data: IDataTypes) => {
+
+  const arrayOfArrays: any = Object.entries(data.currencies);
+  let firstArray = arrayOfArrays[0];
+  let objectCurrencies = firstArray[firstArray.length-1];
+  let currencies: string[] = [];
+
+  for (const value in objectCurrencies) {
+    currencies.push(objectCurrencies[value]);
+  }
+  return currencies.join(', ');
+};
+
 const getLanguages = (data: IDataTypes) => {
   let languages: string[] = [];
   for (const lang in data.languages) {
@@ -29,4 +42,4 @@ const getTimezones = (data: IDataTypes) => {
   return timeZones.join(', ');
 };
 
-export { clearLocalStorage, shuffleArray, getLanguages, getTimezones }
+export { clearLocalStorage, shuffleArray, getLanguages, getTimezones, getCurrencies }

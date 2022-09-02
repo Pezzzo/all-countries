@@ -26,9 +26,6 @@ export const ClosedP = styled(OpenedP)`
   background-color: ${(props) => props.theme.colorLightRed};
 }
 `
-export const ButtonsWrapper = styled.div`
-display: flex;
-`
 export const ResetButtonWrapper = styled.div`
 margin-left: auto;
 `
