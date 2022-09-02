@@ -12,7 +12,6 @@ const HomePage = () => {
 
   return (
     <>
-      <h1>Home</h1>
       <Link to='/game'>
         {
           started !== null || undefined ?

@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
 import CountriesFlags from '../../blocks/CountriesFlags/CountriesFlags';
 import CountriesName from '../../blocks/CountriesName/CountriesName';
-import Main from '../../layout/main/Main';
 import Error from '../../blocks/Error/Error';
-import Title from '../../ui/Title/Title';
-import DetailCountryInfo from '../../blocks/DetailCountryInfo/DetailCountryInfo';
+import ModalCountryInfo from '../../blocks/ModalCountryInfo/ModalCountryInfo';
 import Button from '../../ui/Button/Button';
-
-import { CountriesList, FlagsList } from './styled';
+import { CountriesList, FlagsList, StyledMain } from './styled';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { getPartData, getPartDataLocalStorage } from '../../../localStorage/localStorage';
@@ -50,12 +47,12 @@ const CountriesPage = () => {
             </PlayButton>
           </div>
           :
-          <Main>
+          <StyledMain>
             <div>
               <CountriesList>
-                <Title>
+                <h2>
                   countries:
-                </Title>
+                </h2>
                 {notSort && notSort.map((item) => <CountriesName data={item} key={item.flag} />)}
               </CountriesList>
             </div>
@@ -63,9 +60,9 @@ const CountriesPage = () => {
               <FlagsList>
                 {sort && sort.map((item) => <CountriesFlags data={item} key={item.flag} />)}
               </FlagsList>
-              {coincidence && <DetailCountryInfo data={selectedCountry} />}
+              {coincidence && <ModalCountryInfo data={selectedCountry} />}
             </div>
-          </Main>
+          </StyledMain>
       }
     </>
   );

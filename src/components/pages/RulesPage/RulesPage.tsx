@@ -11,7 +11,6 @@ const RulesPage = () => {
 
   return (
     <>
-    <h1>Rules</h1>
     {
         started !== null || undefined ?
           <Link to='/game'>

@@ -9,3 +9,10 @@ display: flex;
 align-items: center;
 background-color: ${(props) => props.theme.colorGrey};
 `
+export const StyledLink = styled.a`
+color: ${(props) => props.theme.colorBlackText};
+
+&:hover {
+  color: ${(props) => props.theme.colorDarkBlue};
+}
+`

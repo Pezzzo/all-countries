@@ -4,6 +4,7 @@ export const StyledPOpen = styled.p`
 margin: 0;
 padding: 4px;
 cursor: pointer;
+transition: all 0.3s;
 
 &:hover {
   background-color: ${(props) => props.theme.colorLightGreen};
@@ -20,6 +21,5 @@ height: 120px;
 `
 export const Wrapper = styled.div`
 padding: 10px;
-outline: 2px solid ${(props) => props.theme.colorDarkGray};
-outline-offset: -2px;
+background-color: ${(props) => props.theme.colorBlackModal10};
 `

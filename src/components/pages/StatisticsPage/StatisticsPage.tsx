@@ -8,9 +8,9 @@ import { IDataTypes } from '../../../types/dataTypes';
 import { ActionTypes } from '../../../types/redusersTypes';
 import { clearLocalStorage } from '../../../util/util';
 import Error from '../../blocks/Error/Error';
-import NotOpenedList from '../../blocks/CountriesList/CountriesList';
+import CountriesList from '../../blocks/CountriesList/CountriesList';
 import Button from '../../ui/Button/Button';
-import { ListsWrapper, StyledOl } from './styled';
+import { ButtonsWrapper, ListsWrapper, StyledOl, ResetButtonWrapper } from './styled';
 
 const StatisticsPage = () => {
 
@@ -32,20 +32,23 @@ const StatisticsPage = () => {
 
   return error ? <Error error={error} /> : (
     <>
-      <h1>Statistics</h1>
-      {
-        STARTED !== null || undefined ?
-          <Link to='/game'>
-            <PlayButton>
-            <Button clickHandler={() => getPartDataLocalStorage(dispatch)}>continue</Button>
-            </PlayButton>
-          </Link>
-          :
-          ''
-      }
-      <ResetButton>
-      <Button clickHandler={clearLocalStorage}>reset</Button>
-      </ResetButton>
+      <ButtonsWrapper>
+        {
+          STARTED !== null || undefined ?
+            <Link to='/game'>
+              <PlayButton>
+                <Button clickHandler={() => getPartDataLocalStorage(dispatch)}>continue</Button>
+              </PlayButton>
+            </Link>
+            :
+            ''
+        }
+        <ResetButtonWrapper>
+          <ResetButton>
+            <Button clickHandler={clearLocalStorage}>reset</Button>
+          </ResetButton>
+        </ResetButtonWrapper>
+      </ButtonsWrapper>
       {
         loading ? '' :
           <div>
@@ -57,11 +60,11 @@ const StatisticsPage = () => {
       <ListsWrapper>
         <StyledOl>
           <h3>opened: </h3>
-          {openedCountries && openedCountries.map((item: IDataTypes) => <NotOpenedList data={item} key={item.flag} hover={OPENED} />)}
+          {openedCountries && openedCountries.map((item: IDataTypes) => <CountriesList data={item} key={item.flag} hover={OPENED} />)}
         </StyledOl>
         <StyledOl>
           <h3>not opened: </h3>
-          {notOpenedCountries && notOpenedCountries.map((item: IDataTypes) => <NotOpenedList data={item} key={item.flag} hover={NOT_OPENED} />)}
+          {notOpenedCountries && notOpenedCountries.map((item: IDataTypes) => <CountriesList data={item} key={item.flag} hover={NOT_OPENED} />)}
         </StyledOl>
       </ListsWrapper>
     </>

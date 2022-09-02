@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 export const PlayButton = styled.button`
 color: ${(props) => props.theme.colorBlackText};
-min-width: 140px;
 background-color: ${(props) => props.theme.colorLightGreen};
-padding: 6px 10px;
+padding: 6px 30px;
 border: none;
 cursor: pointer;
 border-radius: 10px;
@@ -33,4 +32,12 @@ padding: 4px;
 `
 export const StyledSpan = styled.span`
 font-weight: 600;
+`
+
+export const StyledLinkToMap = styled.a`
+color: ${(props) => props.theme.colorDarkBlue};
+
+&:hover {
+  color: ${(props) => props.theme.colorRed};
+}
 `

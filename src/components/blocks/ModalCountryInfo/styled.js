@@ -23,7 +23,7 @@ export const ImgWrapper = styled.div`
 text-align: center;
 `
 export const StyledImg = styled.img`
-outline: 2px solid ${(props) => props.theme.colorDarkGray};
+box-shadow: 0 0 6px 2px ${(props) => props.theme.colorBlack};
 `
 
 export const CloseButton = styled.button`
