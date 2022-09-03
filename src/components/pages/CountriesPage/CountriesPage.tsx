@@ -45,13 +45,13 @@ const CountriesPage = () => {
               <Button clickHandler={() => getPartData(dispatch)}>play</Button>
             </PlayButton>
             :
-            null
+            ''
         }
         {
           loading ? null :
             <CounterWrapper>
               <StyledPCounter>
-               attempts: <StyledSpan>{attemptsСount}</StyledSpan>
+              right to fail: <StyledSpan>{attemptsСount}</StyledSpan>
               </StyledPCounter>
             </CounterWrapper>
         }
@@ -68,9 +68,13 @@ const CountriesPage = () => {
           <StyledMain>
             <div>
               <CountriesList>
-                <h2>
-                  countries:
-                </h2>
+                {started !== null || undefined ?
+                  <h2>
+                    countries:
+                  </h2>
+                  :
+                  ''
+                }
                 {notSort && notSort.map((item) => <CountriesName data={item} key={item.flag} />)}
               </CountriesList>
             </div>

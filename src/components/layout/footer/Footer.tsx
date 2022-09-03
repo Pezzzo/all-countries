@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyledFooter, StyledLink } from './styled';
+import { StyledFooter, StyledLink, StyledLinkAutor } from './styled';
+import { logo } from '../../../assets/image';
 
 const Footer = () => {
   return (
@@ -17,6 +18,9 @@ const Footer = () => {
           rel="noopener noreferrer">
           rawpixel.com
         </StyledLink>
+        <StyledLinkAutor href="https://github.com/Pezzzo" target="_blank" rel="noopener noreferrer">
+          Pezzzo
+        </StyledLinkAutor>
       </StyledFooter>
     </>
   );

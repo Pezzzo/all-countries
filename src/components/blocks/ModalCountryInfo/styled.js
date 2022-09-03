@@ -9,6 +9,7 @@ right: 0;
 display: flex;
 justify-content: center;
 align-items: center;
+z-index: 10;
 background-color: ${(props) => props.theme.colorBlackModal};
 `
 export const StyledDiv = styled.div`

@@ -4,7 +4,6 @@ import { StyledFlagsLi, Img } from './styled';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { countryFlagHandler } from '../../../handlers/handlers';
-import '../blocks.css';
 
 
 interface ICountriesFlags {
@@ -14,6 +13,7 @@ interface ICountriesFlags {
 const CountriesFlags =  ({ data }: ICountriesFlags) => {
 
   const {selectedCountry} = useTypedSelector(state => state.selectedCountry);
+
 
   const dispatch = useDispatch();
 

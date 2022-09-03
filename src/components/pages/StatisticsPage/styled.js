@@ -29,3 +29,11 @@ export const ClosedP = styled(OpenedP)`
 export const ResetButtonWrapper = styled.div`
 margin-left: auto;
 `
+export const OpenedCountriesP = styled.p`
+font-size: 22px;
+font-weight: 700;
+`
+export const OpenedCountriesSpan = styled.span`
+font-size: 22px;
+font-weight: 500;
+`

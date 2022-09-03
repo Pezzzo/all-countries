@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { PlayButton, ResetButton, ButtonsWrapper } from '../../../common-styles/styled';
-import { ListsWrapper, StyledOl, ResetButtonWrapper } from './styled';
+import { ListsWrapper, StyledOl, ResetButtonWrapper, OpenedCountriesP, OpenedCountriesSpan} from './styled';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { getOpenedCountries, getPartDataLocalStorage, getNotOpenedCountries } from '../../../localStorage/localStorage';
 import { IDataTypes } from '../../../types/dataTypes';
@@ -52,9 +52,9 @@ const StatisticsPage = () => {
       {
         loading ? '' :
           <div>
-            <p>
-              opened countries: <span>{openedCountryCount}</span> out of 250
-            </p>
+            <OpenedCountriesP>
+              opened countries: <OpenedCountriesSpan>{openedCountryCount} out of 250</OpenedCountriesSpan>
+            </OpenedCountriesP>
           </div>
       }
       <ListsWrapper>

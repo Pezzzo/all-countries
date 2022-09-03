@@ -109,13 +109,15 @@ const countryFlagHandler = (
 };
 
 const closeModal = (dispatch: Dispatch<Action>) => {
-  const currentsEl = document.querySelector('.rightAnswer');
+  const currentFlag = document.querySelector('.rightAnswer');
+  const currentName = document.querySelector('.currentCountry');
 
   window.addEventListener('keydown', (evt) => {
     if (evt.key === 'Esc' || evt.key === 'Escape') {
       dispatch({ type: ActionTypes.COINCIDENCE_FALSE });
       dispatch({ type: ActionTypes.COUNTRY, payload: {} });
-      currentsEl?.classList.add('rightAnswerAnimation');
+      currentFlag?.classList.add('rightAnswerAnimation');
+      currentName?.classList.add('rightAnswerAnimation');
       setTimeout(() => getPartDataLocalStorage(dispatch), 1000);
     }
   });
@@ -125,12 +127,14 @@ const closeModalHandler = (evt: React.MouseEvent<HTMLDivElement>, dispatch: Disp
 
   const modal = (evt.target as HTMLElement).closest('.modal');
   const modalCloseButton = (evt.target as HTMLElement).closest('.closeButton');
-  const currentsEl = document.querySelector('.rightAnswer');
+  const currentFlag = document.querySelector('.rightAnswer');
+  const currentName = document.querySelector('.currentCountry');
 
   if (!modal || modalCloseButton) {
     dispatch({ type: ActionTypes.COINCIDENCE_FALSE });
     dispatch({ type: ActionTypes.COUNTRY, payload: {} });
-    currentsEl?.classList.add('rightAnswerAnimation');
+    currentFlag?.classList.add('rightAnswerAnimation');
+    currentName?.classList.add('rightAnswerAnimation');
     setTimeout(() => getPartDataLocalStorage(dispatch), 1000);
   }
 };

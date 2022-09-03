@@ -1,8 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledPOpen = styled.p`
 margin: 0;
 padding: 4px;
+line-height: 24px;
+font-weight: 600;
 cursor: pointer;
 transition: all 0.3s;
 
