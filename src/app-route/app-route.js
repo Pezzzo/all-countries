@@ -2,7 +2,7 @@ const AppRoute = {
   HOME: "/",
   COUNTRIES: "/game",
   RULES: "/rules",
-  STATISTICS: "/statistics",
+  RESULTS: "/results",
 };
 
 export default AppRoute;

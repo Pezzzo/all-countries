@@ -2,9 +2,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { IDataTypes } from '../../../types/dataTypes';
 import { CloseButton, ImgWrapper, ModalWrapper, StyledDiv, StyledImg } from './styled';
-import { closeModal, closeModalHandler } from '../../../handlers/handlers'
 import { StyledP, StyledSpan } from '../../../common-styles/styled';
 import DetailCountryInfo from '../DetailCountryInfo/DetailCountryInfo';
+import { closeModalKeyboard, closeModalMouse } from '../../../util/util';
+import useSelectors from '../../../hooks/useSelectors';
 
 
 interface Icomponent {
@@ -13,13 +14,15 @@ interface Icomponent {
 
 const ModalCountryInfo = ({ data }: Icomponent) => {
 
+  const {partData} = useSelectors();
+
   const dispatch = useDispatch();
 
-  closeModal(dispatch);
+  closeModalKeyboard(dispatch, partData);
 
   return (
     <>
-      <ModalWrapper onClick={(evt) => closeModalHandler(evt, dispatch)}>
+      <ModalWrapper onClick={(evt) => closeModalMouse(evt, dispatch, partData)}>
         <StyledDiv className="modal">
           <CloseButton className="closeButton">×</CloseButton>
           <ImgWrapper>

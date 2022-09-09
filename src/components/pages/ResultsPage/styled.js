@@ -4,7 +4,6 @@ export const ListsWrapper = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr;
 `
-
 export const StyledOl = styled.ol`
 margin: 0;
 padding: 0 40px;
@@ -29,11 +28,7 @@ export const ClosedP = styled(OpenedP)`
 export const ResetButtonWrapper = styled.div`
 margin-left: auto;
 `
-export const OpenedCountriesP = styled.p`
-font-size: 22px;
-font-weight: 700;
-`
-export const OpenedCountriesSpan = styled.span`
+export const StyledSpan = styled.span`
 font-size: 22px;
 font-weight: 500;
 `

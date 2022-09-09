@@ -1,10 +1,15 @@
+import { Action, ActionTypes } from './../types/actionsTypes';
+import { Dispatch } from 'redux';
 import { IDataTypes } from '../types/dataTypes';
+import { getPartDataLocalStorage } from '../localStorage/localStorage';
 
+// очистить хранилище
 const clearLocalStorage = () => {
-  localStorage.clear();
   window.location.reload();
+  localStorage.clear();
 };
 
+// перемешать массив
 const shuffleArray = (data: IDataTypes[]) => {
   for (let i = data.length - 1; i > 0; i--) {
     let index = Math.floor(Math.random() * (i + 1));
@@ -13,15 +18,16 @@ const shuffleArray = (data: IDataTypes[]) => {
   return data;
 };
 
+// получить валюты
 const getCurrencies = (data: IDataTypes) => {
 
   if (data.currencies === undefined || null) {
     return '';
   }
 
-  const arrayOfArrays: any = Object.entries(data.currencies);
+  const arrayOfArrays: any[] = Object.entries(data.currencies);
   let firstArray = arrayOfArrays[0];
-  let objectCurrencies = firstArray[firstArray.length-1];
+  let objectCurrencies = firstArray[firstArray.length - 1];
   let currencies: string[] = [];
 
   for (const value in objectCurrencies) {
@@ -30,6 +36,7 @@ const getCurrencies = (data: IDataTypes) => {
   return currencies.join(', ');
 };
 
+// получить языки
 const getLanguages = (data: IDataTypes) => {
 
   if (data.languages === undefined || null) {
@@ -43,6 +50,7 @@ const getLanguages = (data: IDataTypes) => {
   return languages.join(', ');
 };
 
+// получить часовые пояса
 const getTimezones = (data: IDataTypes) => {
   let timeZones: string[] = [];
   data.timezones.forEach((item) => {
@@ -51,4 +59,68 @@ const getTimezones = (data: IDataTypes) => {
   return timeZones.join(', ');
 };
 
-export { clearLocalStorage, shuffleArray, getLanguages, getTimezones, getCurrencies }
+// удалить 'display-none' у элемента
+const deleteSelector = (selector: string) => {
+  let element = document.querySelector(selector);
+  element?.classList.remove('display-none');
+};
+
+// завершить раунд
+const completeRound = (
+  originalData: IDataTypes[],
+  partData: IDataTypes[],
+  attemptСount: number,
+  oldNotOpenedCountries: IDataTypes[],
+  dispatch: Dispatch<Action>) => {
+
+  if (attemptСount < 1) {
+
+    let newNotOpenedCountries: IDataTypes[] = [...oldNotOpenedCountries];
+
+    setTimeout(() => {
+      if (originalData.length === 0) {
+        dispatch({ type: ActionTypes.ENDED_TRUE });
+      }
+      dispatch({ type: ActionTypes.ZERO_ATTEMPTS_TRUE });
+      newNotOpenedCountries = newNotOpenedCountries.concat(partData);
+      dispatch({ type: ActionTypes.NOT_OPENED_COUNTRIES, payload: newNotOpenedCountries });
+    }, 500);
+  }
+};
+
+// закрыть окно клавишей Esc
+const closeModalKeyboard = (dispatch: Dispatch<Action>, data: IDataTypes[]) => {
+
+  const currentFlag = document.querySelector('.rightAnswer');
+  const currentName = document.querySelector('.currentCountry');
+
+  window.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Esc' || evt.key === 'Escape') {
+      dispatch({ type: ActionTypes.COINCIDENCE_FALSE });
+      currentFlag?.classList.add('rightAnswerAnimation');
+      currentName?.classList.add('rightAnswerAnimation');
+      setTimeout(() => getPartDataLocalStorage(dispatch, data), 650);
+    }
+  });
+};
+
+// закрыть окно кликом
+const closeModalMouse = (
+  evt: React.MouseEvent<HTMLDivElement>,
+  dispatch: Dispatch<Action>,
+  data: IDataTypes[]) => {
+
+  const modal = (evt.target as HTMLElement).closest('.modal');
+  const modalCloseButton = (evt.target as HTMLElement).closest('.closeButton');
+  const currentFlag = document.querySelector('.rightAnswer');
+  const currentName = document.querySelector('.currentCountry');
+
+  if (!modal || modalCloseButton) {
+    dispatch({ type: ActionTypes.COINCIDENCE_FALSE });
+    currentFlag?.classList.add('rightAnswerAnimation');
+    currentName?.classList.add('rightAnswerAnimation');
+    setTimeout(() => getPartDataLocalStorage(dispatch, data), 650);
+  }
+};
+
+export { clearLocalStorage, shuffleArray, getLanguages, getTimezones, getCurrencies, deleteSelector, completeRound, closeModalKeyboard, closeModalMouse }

@@ -1,4 +1,5 @@
-import { IRedusersStates, Action, ActionTypes } from '../../types/redusersTypes';
+import { Action, ActionTypes } from '../../types/actionsTypes';
+import { IRedusersStates } from '../../types/redusersTypes';
 
 const initialState: IRedusersStates = {
   selectedCountry: {},
@@ -6,7 +7,7 @@ const initialState: IRedusersStates = {
 
 export const selectedCountryReduser = (state = initialState, action: Action) : IRedusersStates => {
   switch (action.type) {
-    case ActionTypes.COUNTRY:
+    case ActionTypes.SELECTED_COUNTRY:
       return { selectedCountry: action.payload }
     default:
     return state

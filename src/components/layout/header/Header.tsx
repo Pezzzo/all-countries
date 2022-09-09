@@ -1,17 +1,8 @@
-import React, { useEffect } from 'react';
-import { getPartDataLocalStorage, getOpenedCountries } from '../../../localStorage/localStorage';
+import React from 'react';
 import CustomLink from '../../ui/CustomLink/CustomLink';
 import { StyledHeader, NavWrapper } from './styled';
-import { useDispatch } from 'react-redux';
-import { ActionTypes } from '../../../types/redusersTypes';
 
 const Header = () => {
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch({ type: ActionTypes.ATTEMPT_COUNTER, payload: localStorage.getItem('attemptsCount')});
-  }, [dispatch]);
 
   return (
     <>
@@ -20,14 +11,14 @@ const Header = () => {
           <CustomLink to='/'>
             home
           </CustomLink>
-          <CustomLink to='/game' clickHandler={() => getPartDataLocalStorage(dispatch)}>
+          <CustomLink to='/game'>
             game
           </CustomLink>
           <CustomLink to='/rules'>
             rules
           </CustomLink>
-          <CustomLink to='/statistics' clickHandler={() => getOpenedCountries(dispatch)}>
-            statistics
+          <CustomLink to='/results'>
+          results
           </CustomLink>
         </NavWrapper>
       </StyledHeader>

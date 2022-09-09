@@ -1,4 +1,5 @@
-import { IRedusersStates, Action, ActionTypes } from './../../types/redusersTypes';
+import { IRedusersStates } from '../../types/redusersTypes';
+import { Action, ActionTypes } from './../../types/actionsTypes';
 
 const initialState: IRedusersStates = {
   sort: [],

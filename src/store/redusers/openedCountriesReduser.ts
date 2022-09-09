@@ -1,10 +1,11 @@
-import { IRedusersStates, Action, ActionTypes } from './../../types/redusersTypes';
+import { IOpenedCountries } from '../../types/redusersTypes';
+import { Action, ActionTypes } from './../../types/actionsTypes';
 
-const initialState: IRedusersStates = {
+const initialState: IOpenedCountries = {
   openedCountries: [],
 }
 
-export const openedCountriesReduser = (state = initialState, action: Action) : IRedusersStates => {
+export const openedCountriesReduser = (state = initialState, action: Action) : IOpenedCountries => {
   switch (action.type) {
     case ActionTypes.OPENED_COUNTRIES:
       return { openedCountries: action.payload }

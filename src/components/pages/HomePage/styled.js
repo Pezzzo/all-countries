@@ -27,7 +27,7 @@ text-align: center;
 
 animation: 2s ${fadeAnimation};
 
-&.none {
+&.display-none {
   display: none;
 }
 `

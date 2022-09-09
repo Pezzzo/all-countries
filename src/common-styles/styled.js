@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const PlayButton = styled.button`
 color: ${(props) => props.theme.colorBlackText};
 background-color: ${(props) => props.theme.colorLightGreen};
-padding: 6px 30px;
 border: none;
 cursor: pointer;
 border-radius: 10px;
@@ -20,7 +19,7 @@ background-color: ${(props) => props.theme.colorLightRed};
   background-color: ${(props) => props.theme.colorRed};
 }
 `
-export const Wrapper = styled.div`
+export const ColumnWrapper = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -41,7 +40,9 @@ color: ${(props) => props.theme.colorDarkBlue};
   color: ${(props) => props.theme.colorRed};
 }
 `
-export const ButtonsWrapper = styled.div`
+export const RowWrapper = styled.div`
 display: flex;
 align-items: center;
+justify-content: center;
+margin-bottom: 40px;
 `

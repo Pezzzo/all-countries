@@ -1,9 +1,8 @@
-import { setNumberOpenedCountries, setNumberAttempts, getPartData, getPartDataLocalStorage } from './../localStorage/localStorage';
-import { Action, ActionTypes } from './../types/redusersTypes';
+import React from 'react';
+import { getPartData } from './../localStorage/localStorage';
+import { Action, ActionTypes } from '../types/actionsTypes';
 import { IDataTypes } from "../types/dataTypes";
 import { Dispatch } from 'redux';
-
-const ATTEMPTS = 5;
 
 const countryNameHandler = (
   evt: React.MouseEvent<HTMLParagraphElement>,
@@ -13,42 +12,36 @@ const countryNameHandler = (
 
   let countryName = (evt.target as HTMLElement);
 
-  dispatch({ type: ActionTypes.COUNTRY, payload: data });
+  dispatch({ type: ActionTypes.SELECTED_COUNTRY, payload: data });
 
   document.querySelectorAll('.country').forEach((item) => {
-    item.classList.remove('countryNamePassive');
-    item.classList.remove('currentCountry');
+    item.classList.remove('countryNamePassive', 'currentCountry');
     item.classList.add('countryNameActive');
   });
 
-  document.querySelectorAll('.disabled').forEach((item) => {
-    item.classList.remove('countryNameActive');
-    item.classList.remove('countryNamePassive');
-  });
-
-  countryName.classList.add('countryNamePassive');
-  countryName.classList.add('currentCountry');
+  countryName.classList.add('countryNamePassive', 'currentCountry');
   countryName.classList.remove('countryNameActive');
 };
 
 
-const getLastCountry = (data: IDataTypes) => {
+const getLastCountry = (
+  data: IDataTypes,
+  oldPartData: IDataTypes[],
+  oldOpenedCountries: IDataTypes[],
+  dispatch: Dispatch<Action>): void => {
 
-  let openCountriesCounter = JSON.parse(localStorage.openCountries);
-  let partData = JSON.parse(localStorage.partData);
-  let openedAllCountries = JSON.parse(localStorage.openedCountries);
+  let newPartData: IDataTypes[] = [...oldPartData];
+  let newOpenedAllCountries: IDataTypes[] = [...oldOpenedCountries];
 
-  for (let i = 0; i < partData.length; i++) {
+  for (let i = 0; i < newPartData.length; i++) {
 
-    if (data.name.common === partData[i].name.common) {
+    if (data.name.common === newPartData[i].name.common) {
 
-      openedAllCountries.push(partData[i]);
-      openCountriesCounter.push(partData[i]);
-      partData.splice(i, 1);
+      newOpenedAllCountries.push(newPartData[i]);
+      newPartData.splice(i, 1);
 
-      localStorage.openedCountries = JSON.stringify(openedAllCountries);
-      localStorage.openCountries = JSON.stringify(openCountriesCounter);
-      localStorage.partData = JSON.stringify(partData);
+      dispatch({ type: ActionTypes.PART_DATA, payload: newPartData });
+      dispatch({ type: ActionTypes.OPENED_COUNTRIES, payload: newOpenedAllCountries });
       return;
     }
   }
@@ -57,22 +50,23 @@ const getLastCountry = (data: IDataTypes) => {
 
 const countryFlagHandler = (
   evt: React.MouseEvent<HTMLImageElement>,
-  country: any,
+  originalData: IDataTypes[],
+  partData: IDataTypes[],
+  attemptСount: number,
+  selectedCountry: any,
+  openedCountries: IDataTypes[],
   data: IDataTypes,
   dispatch: Dispatch<Action>): void => {
 
-  let partData = JSON.parse(localStorage.partData);
-  let notOpenedCountries = JSON.parse(localStorage.notOpenedCountries);
   let flag = (evt.target as HTMLElement);
 
-  if (Object.keys(country).length === 0) {
+  if (Object.keys(selectedCountry).length === 0) {
     return;
   }
 
-  if (data.name.common === country.name.common) {
+  if (data.name.common === selectedCountry.name.common) {
 
-    setNumberOpenedCountries(dispatch);
-    getLastCountry(country);
+    getLastCountry(selectedCountry, partData, openedCountries, dispatch);
 
     flag.classList.add('flagPassive');
     flag.classList.remove('flagActive');
@@ -80,63 +74,23 @@ const countryFlagHandler = (
 
     dispatch({ type: ActionTypes.COINCIDENCE_TRUE });
 
-    let partData = JSON.parse(localStorage.partData);
-
     if (partData.length <= 0) {
-      getPartData(dispatch);
+      getPartData(dispatch, originalData);
     }
   }
 
-  if (data.name.common !== country.name.common) {
+  if (data.name.common !== selectedCountry.name.common) {
 
-    setNumberAttempts(dispatch);
+    if (attemptСount === 0) {
+      return;
+    }
 
-    flag.classList.remove('wrongAttempt');
+    dispatch({ type: ActionTypes.ATTEMPT_COUNTER });
+    dispatch({ type: ActionTypes.COINCIDENCE_FALSE });
+
     flag.classList.add('wrongAttempt');
-
-    dispatch({ type: ActionTypes.COINCIDENCE_FALSE });
-    setTimeout(() => flag.classList.remove('wrongAttempt'), 1000);
-
-    let attempt = JSON.parse(localStorage.attemptsCount);
-    if (attempt < 1) {
-      dispatch({ type: ActionTypes.ZERO_ATTEMPTS_TRUE });
-      dispatch({ type: ActionTypes.ATTEMPT_COUNTER, payload: ATTEMPTS });
-      notOpenedCountries = notOpenedCountries.concat(partData);
-      localStorage.notOpenedCountries = JSON.stringify(notOpenedCountries);
-      localStorage.attemptsCount = JSON.stringify(ATTEMPTS);
-    }
+    setTimeout(() => flag.classList.remove('wrongAttempt'), 500);
   }
 };
 
-const closeModal = (dispatch: Dispatch<Action>) => {
-  const currentFlag = document.querySelector('.rightAnswer');
-  const currentName = document.querySelector('.currentCountry');
-
-  window.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Esc' || evt.key === 'Escape') {
-      dispatch({ type: ActionTypes.COINCIDENCE_FALSE });
-      dispatch({ type: ActionTypes.COUNTRY, payload: {} });
-      currentFlag?.classList.add('rightAnswerAnimation');
-      currentName?.classList.add('rightAnswerAnimation');
-      setTimeout(() => getPartDataLocalStorage(dispatch), 1000);
-    }
-  });
-};
-
-const closeModalHandler = (evt: React.MouseEvent<HTMLDivElement>, dispatch: Dispatch<Action>) => {
-
-  const modal = (evt.target as HTMLElement).closest('.modal');
-  const modalCloseButton = (evt.target as HTMLElement).closest('.closeButton');
-  const currentFlag = document.querySelector('.rightAnswer');
-  const currentName = document.querySelector('.currentCountry');
-
-  if (!modal || modalCloseButton) {
-    dispatch({ type: ActionTypes.COINCIDENCE_FALSE });
-    dispatch({ type: ActionTypes.COUNTRY, payload: {} });
-    currentFlag?.classList.add('rightAnswerAnimation');
-    currentName?.classList.add('rightAnswerAnimation');
-    setTimeout(() => getPartDataLocalStorage(dispatch), 1000);
-  }
-};
-
-export { countryNameHandler, countryFlagHandler, closeModal, closeModalHandler }
+export { countryNameHandler, countryFlagHandler }

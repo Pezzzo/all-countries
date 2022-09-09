@@ -28,7 +28,7 @@ const DetailCountryInfo = ({ data }: Icomponent) => {
           <StyledSpan>Population: </StyledSpan>{data.population}
         </StyledP>
         <StyledP>
-          <StyledSpan>Area: </StyledSpan>{data.area}
+          <StyledSpan>Area: </StyledSpan>{data.area} km²
         </StyledP>
         <StyledP>
           <StyledSpan>Timezones: </StyledSpan>{getTimezones(data)}

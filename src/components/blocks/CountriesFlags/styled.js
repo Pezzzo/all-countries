@@ -7,6 +7,7 @@ const flipAnimation = keyframes`${flipOutX}`
 export const Img = styled.img`
 width: 140px;
 height: 75px;
+box-shadow: 0 0 1px 1px ${(props) => props.theme.colorBlack};
 object-fit: cover;
 
 &.flagActive {
@@ -15,18 +16,23 @@ object-fit: cover;
   transition: 0.2s;
 
   &:hover {
-    box-shadow: 0 0 4px 2px ${(props) => props.theme.colorBlack};
+    box-shadow: 0 0 6px 3px ${(props) => props.theme.colorBlack};
   }
 }
 
+&.flagPassive {
+  cursor: auto;
+  pointer-events: none;
+}
+
 &.wrongAttempt {
-  outline: 4px solid ${(props) => props.theme.colorRed};
-  animation: 1s ${shakeAnimation};
+
+  animation: 0.5s ${shakeAnimation};
 }
 
 &.rightAnswerAnimation {
   box-shadow: 0 0 10px 4px ${(props) => props.theme.colorGreen};
-  animation: 1s ${flipAnimation};
+  animation: 0.7s ${flipAnimation};
 }
 `
 export const StyledFlagsLi = styled.li`

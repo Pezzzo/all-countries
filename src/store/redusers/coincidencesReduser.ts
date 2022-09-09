@@ -1,4 +1,5 @@
-import { IRedusersStates, Action, ActionTypes } from '../../types/redusersTypes';
+import { Action, ActionTypes } from '../../types/actionsTypes';
+import { IRedusersStates } from '../../types/redusersTypes';
 
 const initialState: IRedusersStates = {
   coincidence: false,

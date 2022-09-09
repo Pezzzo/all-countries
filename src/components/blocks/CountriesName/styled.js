@@ -13,13 +13,11 @@ background-color: ${(props) => props.theme.colorWhite};
 
 &.countryNamePassive {
   cursor: auto;
-  opacity: 1;
   box-shadow: 0 0 0 2px ${(props) => props.theme.colorBlack};
 }
 
 &.countryNameActive {
   cursor: pointer;
-  opacity: 1;
   transition: 0.2s;
 
   &:hover {

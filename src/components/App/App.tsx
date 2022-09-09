@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppRoute from '../../app-route/app-route';
 import PageWrapper from '../layout/page-wrapper/page-wrapper';
 import RulesPage from '../pages/RulesPage/RulesPage';
-import StatisticsPage from '../pages/StatisticsPage/StatisticsPage';
+import ResultsPage from '../pages/ResultsPage/ResultsPage';
 import HomePage from '../pages/HomePage/HomePage';
 
 function App() {
@@ -20,8 +20,8 @@ function App() {
               element={<CountriesPage />} />
             <Route path={AppRoute.RULES.replace(AppRoute.HOME, "")}
               element={<RulesPage />} />
-            <Route path={AppRoute.STATISTICS.replace(AppRoute.HOME, "")}
-              element={<StatisticsPage />} />
+            <Route path={AppRoute.RESULTS.replace(AppRoute.HOME, "")}
+              element={<ResultsPage />} />
           </Route>
         </Routes>
       </Router>
