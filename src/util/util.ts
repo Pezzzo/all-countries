@@ -88,39 +88,4 @@ const completeRound = (
   }
 };
 
-// закрыть окно клавишей Esc
-const closeModalKeyboard = (dispatch: Dispatch<Action>, data: IDataTypes[]) => {
-
-  const currentFlag = document.querySelector('.rightAnswer');
-  const currentName = document.querySelector('.currentCountry');
-
-  window.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Esc' || evt.key === 'Escape') {
-      dispatch({ type: ActionTypes.COINCIDENCE_FALSE });
-      currentFlag?.classList.add('rightAnswerAnimation');
-      currentName?.classList.add('rightAnswerAnimation');
-      setTimeout(() => getPartDataLocalStorage(dispatch, data), 650);
-    }
-  });
-};
-
-// закрыть окно кликом
-const closeModalMouse = (
-  evt: React.MouseEvent<HTMLDivElement>,
-  dispatch: Dispatch<Action>,
-  data: IDataTypes[]) => {
-
-  const modal = (evt.target as HTMLElement).closest('.modal');
-  const modalCloseButton = (evt.target as HTMLElement).closest('.closeButton');
-  const currentFlag = document.querySelector('.rightAnswer');
-  const currentName = document.querySelector('.currentCountry');
-
-  if (!modal || modalCloseButton) {
-    dispatch({ type: ActionTypes.COINCIDENCE_FALSE });
-    currentFlag?.classList.add('rightAnswerAnimation');
-    currentName?.classList.add('rightAnswerAnimation');
-    setTimeout(() => getPartDataLocalStorage(dispatch, data), 650);
-  }
-};
-
-export { clearLocalStorage, shuffleArray, getLanguages, getTimezones, getCurrencies, deleteSelector, completeRound, closeModalKeyboard, closeModalMouse }
+export { clearLocalStorage, shuffleArray, getLanguages, getTimezones, getCurrencies, deleteSelector, completeRound }

@@ -37,8 +37,8 @@ const HomePage = () => {
           </Link>
         </LinkWrapper>
         <StyledTextWrapper>
-          <StyledTitle1 className="title1 display-none">There are many countries in the world</StyledTitle1>
-          <StyledTitle2 className="title2 display-none">each country has its own symbol - the flag</StyledTitle2>
+          <StyledTitle1 className="title1 display-none">there are many countries in the world</StyledTitle1>
+          <StyledTitle2 className="title2 display-none">each country has own symbol - the flag</StyledTitle2>
           <StyledTitle3 className="title3 display-none">how well do you know them?</StyledTitle3>
         </StyledTextWrapper>
       </StyledMain>

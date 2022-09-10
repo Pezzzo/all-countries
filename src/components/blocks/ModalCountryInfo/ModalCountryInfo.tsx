@@ -4,8 +4,8 @@ import { IDataTypes } from '../../../types/dataTypes';
 import { CloseButton, ImgWrapper, ModalWrapper, StyledDiv, StyledImg } from './styled';
 import { StyledP, StyledSpan } from '../../../common-styles/styled';
 import DetailCountryInfo from '../DetailCountryInfo/DetailCountryInfo';
-import { closeModalKeyboard, closeModalMouse } from '../../../util/util';
 import useSelectors from '../../../hooks/useSelectors';
+import { closeModal, closeModalMouseHandler } from '../../../handlers/handlers';
 
 
 interface Icomponent {
@@ -14,15 +14,21 @@ interface Icomponent {
 
 const ModalCountryInfo = ({ data }: Icomponent) => {
 
-  const {partData} = useSelectors();
+  const { partData } = useSelectors();
 
   const dispatch = useDispatch();
 
-  closeModalKeyboard(dispatch, partData);
+  const closeModalKeyboardHandler = () => {
+    closeModal(dispatch, partData);
+    window.removeEventListener('keydown', closeModalKeyboardHandler);
+  };
+
+  window.addEventListener('keydown', closeModalKeyboardHandler);
 
   return (
     <>
-      <ModalWrapper onClick={(evt) => closeModalMouse(evt, dispatch, partData)}>
+      <ModalWrapper className="modal-wrapper closed"
+        onClick={(evt) => closeModalMouseHandler(evt, dispatch, partData)}>
         <StyledDiv className="modal">
           <CloseButton className="closeButton">×</CloseButton>
           <ImgWrapper>

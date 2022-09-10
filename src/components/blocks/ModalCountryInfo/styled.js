@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeInAnimation, fadeOutAnimation } from "../../../common-styles/animations";
 
 export const ModalWrapper = styled.div`
 position: fixed;
@@ -11,6 +12,14 @@ justify-content: center;
 align-items: center;
 z-index: 10;
 background-color: ${(props) => props.theme.colorBlackModal};
+
+&.closed {
+  animation: 0.3s ${fadeInAnimation};
+}
+
+&.open {
+  animation: 0.3s ${fadeOutAnimation};
+}
 `
 export const StyledDiv = styled.div`
 position: relative;
@@ -26,7 +35,6 @@ text-align: center;
 export const StyledImg = styled.img`
 box-shadow: 0 0 6px 2px ${(props) => props.theme.colorBlack};
 `
-
 export const CloseButton = styled.button`
 position: absolute;
 font-size: 50px;

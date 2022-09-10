@@ -1,7 +1,5 @@
-import styled, { keyframes } from 'styled-components';
-import { flipOutX } from 'react-animations';
-
-const flipAnimation = keyframes`${flipOutX}`
+import styled from 'styled-components';
+import { pulseAnimation, flipAnimation } from '../../../common-styles/animations';
 
 export const StyledP = styled.p`
 margin: 0;
@@ -13,7 +11,8 @@ background-color: ${(props) => props.theme.colorWhite};
 
 &.countryNamePassive {
   cursor: auto;
-  box-shadow: 0 0 0 2px ${(props) => props.theme.colorBlack};
+  outline: 2px solid ${(props) => props.theme.colorBlack};
+  animation: 1s ${pulseAnimation} infinite;
 }
 
 &.countryNameActive {

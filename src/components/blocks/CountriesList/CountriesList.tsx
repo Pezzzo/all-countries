@@ -17,23 +17,22 @@ const CountriesList = ({ data, hover }: ICountriesName) => {
       <li>
         {hover === 'green' ?
           <StyledPOpen onClick={() => setIsActive(!isActive)}>
-            {data.name.common}
+            {data.name.common}<span>{isActive ? '−' : '+'}</span>
           </StyledPOpen>
           :
           <StyledPClosed onClick={() => setIsActive(!isActive)}>
-            {data.name.common}
+            {data.name.common}<span>{isActive ? '−' : '+'}</span>
           </StyledPClosed>
         }
-        {
-          isActive &&
-          <Wrapper>
+
+          <Wrapper className={isActive ? 'current-country-info-active' : 'current-country-info-passive'}>
             <StyledImg src={data.flags.png}
               width="200"
               height="120"
               alt="flag" />
               <DetailCountryInfo data={data}/>
           </Wrapper>
-        }
+
       </li>
     </>
   );

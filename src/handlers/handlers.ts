@@ -1,5 +1,5 @@
 import React from 'react';
-import { getPartData } from './../localStorage/localStorage';
+import { getPartData, getPartDataLocalStorage } from './../localStorage/localStorage';
 import { Action, ActionTypes } from '../types/actionsTypes';
 import { IDataTypes } from "../types/dataTypes";
 import { Dispatch } from 'redux';
@@ -26,12 +26,12 @@ const countryNameHandler = (
 
 const getLastCountry = (
   data: IDataTypes,
-  oldPartData: IDataTypes[],
-  oldOpenedCountries: IDataTypes[],
+  actualPartData: IDataTypes[],
+  actualOpenedCountries: IDataTypes[],
   dispatch: Dispatch<Action>): void => {
 
-  let newPartData: IDataTypes[] = [...oldPartData];
-  let newOpenedAllCountries: IDataTypes[] = [...oldOpenedCountries];
+  let newPartData: IDataTypes[] = [...actualPartData];
+  let newOpenedAllCountries: IDataTypes[] = [...actualOpenedCountries];
 
   for (let i = 0; i < newPartData.length; i++) {
 
@@ -93,4 +93,33 @@ const countryFlagHandler = (
   }
 };
 
-export { countryNameHandler, countryFlagHandler }
+// закрыть модальное окно
+const closeModal = (dispatch: Dispatch<Action>, data: IDataTypes[]) => {
+  const currentFlag = document.querySelector('.rightAnswer');
+  const currentName = document.querySelector('.currentCountry');
+  const modalWrapper = document.querySelector('.modal-wrapper');
+
+  modalWrapper?.classList.remove('closed');
+  modalWrapper?.classList.add('open');
+  setTimeout(() => {
+    currentFlag?.classList.add('rightAnswerAnimation');
+    currentName?.classList.add('rightAnswerAnimation');
+  }, 200);
+  setTimeout(() => dispatch({ type: ActionTypes.COINCIDENCE_FALSE }), 200);
+  setTimeout(() => getPartDataLocalStorage(dispatch, data), 850);
+};
+
+const closeModalMouseHandler = (
+  evt: React.MouseEvent<HTMLDivElement>,
+  dispatch: Dispatch<Action>,
+  data: IDataTypes[]) => {
+
+  const modal = (evt.target as HTMLElement).closest('.modal');
+  const modalCloseButton = (evt.target as HTMLElement).closest('.closeButton');
+
+  if (!modal || modalCloseButton) {
+    closeModal(dispatch, data);
+  }
+};
+
+export { countryNameHandler, countryFlagHandler, closeModal, closeModalMouseHandler }

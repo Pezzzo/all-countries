@@ -1,8 +1,5 @@
-import styled, { keyframes } from 'styled-components';
-import { headShake, flipOutX } from 'react-animations';
-
-const shakeAnimation = keyframes`${headShake}`;
-const flipAnimation = keyframes`${flipOutX}`
+import styled from 'styled-components';
+import { shakeAnimation, flipAnimation } from '../../../common-styles/animations';
 
 export const Img = styled.img`
 width: 140px;
@@ -26,7 +23,6 @@ object-fit: cover;
 }
 
 &.wrongAttempt {
-
   animation: 0.5s ${shakeAnimation};
 }
 

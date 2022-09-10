@@ -43,7 +43,7 @@ const StatisticsPage = () => {
         </ResetButtonWrapper>
       </RowWrapper>
       <h3>countries: 250</h3>
-      <ListsWrapper>
+      <ListsWrapper className="lists-wrapper">
         <StyledOl>
           <h3>opened: <StyledSpan>{openedCountries.length}</StyledSpan></h3>
           {openedCountries && openedCountries.map((item: IDataTypes) =>

@@ -1,8 +1,6 @@
-import styled, { keyframes } from 'styled-components';
-import { fadeIn } from 'react-animations';
+import styled from 'styled-components';
 import Bg from '../../../assets/home-bg.jpg'
-
-const fadeAnimation = keyframes`${fadeIn}`;
+import { fadeInAnimation } from '../../../common-styles/animations';
 
 export const StyledMain = styled.main`
 position: relative;
@@ -25,7 +23,7 @@ font-size: 30px;
 line-height: 40px;
 text-align: center;
 
-animation: 2s ${fadeAnimation};
+animation: 2s ${fadeInAnimation};
 
 &.display-none {
   display: none;
