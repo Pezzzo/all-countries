@@ -1,11 +1,13 @@
-import { Action, ActionTypes } from '../../types/actionsTypes';
-import { IRedusersStates } from '../../types/redusersTypes';
+import { Action } from '../../types/actions';
+import { IDataTypes } from '../../types/dataTypes';
+import { ISelectedCountry } from '../../types/redusersTypes';
+import { ActionTypes } from '../const';
 
-const initialState: IRedusersStates = {
-  selectedCountry: {},
+const initialState: ISelectedCountry = {
+  selectedCountry: {} as IDataTypes,
 }
 
-export const selectedCountryReduser = (state = initialState, action: Action) : IRedusersStates => {
+export const selectedCountryReduser = (state = initialState, action: Action) : ISelectedCountry => {
   switch (action.type) {
     case ActionTypes.SELECTED_COUNTRY:
       return { selectedCountry: action.payload }

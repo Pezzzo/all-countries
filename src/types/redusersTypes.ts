@@ -3,11 +3,14 @@ import { IDataTypes } from "./dataTypes";
 export interface IRedusersStates {
   loading?: boolean;
   error?: null | string;
-  selectedCountry?: any;
   coincidence?: boolean;
   sort?: IDataTypes[];
   notSort?: IDataTypes[];
   zeroAttempts?: boolean;
+}
+
+export interface ISelectedCountry {
+  selectedCountry: IDataTypes;
 }
 
 export interface IAttemptsCounterStates {

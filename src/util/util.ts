@@ -1,7 +1,7 @@
-import { Action, ActionTypes } from './../types/actionsTypes';
+import { Action } from '../types/actions';
 import { Dispatch } from 'redux';
 import { IDataTypes } from '../types/dataTypes';
-import { getPartDataLocalStorage } from '../localStorage/localStorage';
+import { ActionTypes } from '../store/const';
 
 // очистить хранилище
 const clearLocalStorage = () => {
@@ -59,12 +59,6 @@ const getTimezones = (data: IDataTypes) => {
   return timeZones.join(', ');
 };
 
-// удалить 'display-none' у элемента
-const deleteSelector = (selector: string) => {
-  let element = document.querySelector(selector);
-  element?.classList.remove('display-none');
-};
-
 // завершить раунд
 const completeRound = (
   originalData: IDataTypes[],
@@ -88,4 +82,4 @@ const completeRound = (
   }
 };
 
-export { clearLocalStorage, shuffleArray, getLanguages, getTimezones, getCurrencies, deleteSelector, completeRound }
+export { clearLocalStorage, shuffleArray, getLanguages, getTimezones, getCurrencies, completeRound }

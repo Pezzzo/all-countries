@@ -1,7 +1,8 @@
-import { Action, ActionTypes } from '../types/actionsTypes';
+import { Action } from '../types/actions';
 import axios, { AxiosError } from 'axios';
 import { IDataTypes } from '../types/dataTypes';
 import { Dispatch } from 'redux';
+import { ActionTypes } from '../store/const';
 
 const fetch = (): any => {
 

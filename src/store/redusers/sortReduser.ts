@@ -1,5 +1,6 @@
 import { IRedusersStates } from '../../types/redusersTypes';
-import { Action, ActionTypes } from './../../types/actionsTypes';
+import { Action } from '../../types/actions';
+import { ActionTypes } from '../const';
 
 const initialState: IRedusersStates = {
   sort: [],

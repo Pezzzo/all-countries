@@ -1,33 +1,14 @@
-export enum ActionTypes {
-  FETCH = 'FETCH',
-  FETCH_SUCCESS = 'FETCH_SUCCESS',
-  FETCH_ERROR = 'FETCH_ERROR',
-  ORIGINAL_DATA = 'ORIGINAL_DATA',
-  PART_DATA = 'PART_DATA',
-  SELECTED_COUNTRY = 'COUNTRY',
-  COINCIDENCE_TRUE = 'VALUE_TRUE',
-  COINCIDENCE_FALSE = 'VALUE_FALSE',
-  SORT = 'SORT',
-  NOT_SORT = 'NOT_SORT',
-  ATTEMPT_COUNTER = 'ATTEMPT_COUNTER',
-  ATTEMPT_COUNTER_RESTART = 'ATTEMPT_COUNTER_RESTART',
-  ROUND_COUNTER = 'ROUND_COUNTER',
-  OPENED_COUNTRIES = 'OPENED_COUNTRIES',
-  NOT_OPENED_COUNTRIES = 'NOT_OPENED_COUNTRIES',
-  ZERO_ATTEMPTS_TRUE = 'ZERO_ATTEMPTS_TRUE',
-  ZERO_ATTEMPTS_FALSE = 'ZERO_ATTEMPTS_FALSE',
-  STARTED_TRUE = 'STARTED_TRUE',
-  ENDED_TRUE = 'ENDED_TRUE',
-}
+import { ActionTypes } from '../store/const';
+import { IDataTypes } from './dataTypes';
 
 interface IOriginalDataAction {
   type: ActionTypes.ORIGINAL_DATA;
-  payload: any[];
+  payload: IDataTypes[];
 }
 
 interface IPartDataAction {
   type: ActionTypes.PART_DATA;
-  payload: any[];
+  payload: IDataTypes[];
 }
 
 interface IFetchAction {
@@ -43,9 +24,9 @@ interface IFetchErrorAction {
   payload: string;
 }
 
-interface ICountryAction {
+interface ISelectedCountryAction {
   type: ActionTypes.SELECTED_COUNTRY;
-  payload: object;
+  payload: IDataTypes;
 }
 
 interface ICoincidencesTrueAction {
@@ -58,12 +39,12 @@ interface ICoincidencesFalseAction {
 
 interface INotSortAction {
   type: ActionTypes.NOT_SORT;
-  payload: any[];
+  payload: IDataTypes[];
 }
 
 interface ISortAction {
   type: ActionTypes.SORT;
-  payload: any[];
+  payload: IDataTypes[];
 }
 
 interface IAttemptAction {
@@ -80,12 +61,12 @@ interface IRoundAction {
 
 interface IOpenedCountriesAction {
   type: ActionTypes.OPENED_COUNTRIES;
-  payload: any[];
+  payload: IDataTypes[];
 }
 
 interface INotOpenedCountriesAction {
   type: ActionTypes.NOT_OPENED_COUNTRIES;
-  payload: any[];
+  payload: IDataTypes[];
 }
 
 interface IZeroAttemptsTrueAction {
@@ -110,7 +91,7 @@ export type Action =
   | IFetchAction
   | IFetchSuccessAction
   | IFetchErrorAction
-  | ICountryAction
+  | ISelectedCountryAction
   | ICoincidencesTrueAction
   | ICoincidencesFalseAction
   | ISortAction

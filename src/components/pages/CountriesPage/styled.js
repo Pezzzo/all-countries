@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeInLeftAnimation, fadeInRightAnimation, fadeInAnimation } from "../../../common-styles/animations";
 
 export const FlagsList = styled.ul`
 padding-left: 60px;
@@ -22,6 +23,7 @@ export const Main = styled.main`
 display: grid;
 grid-template-columns: 300px 1fr;
 gap-column: 40px;
+animation: 1.5s ${fadeInAnimation};
 `
 export const IntermediateMain = styled.main`
 width: 100%;
@@ -37,14 +39,16 @@ margin-left: auto;
 padding: 0 10px;
 margin-right: 10px;
 margin-bottom: 20px;
-box-shadow: 0 0 2px 2px ${(props) => props.theme.colorBlackText};;
+box-shadow: 0 0 2px 2px ${(props) => props.theme.colorBlackText};
+animation: 0.5s ${fadeInRightAnimation};
 `
-export const StyledCounterFail = styled.p`
+export const CounterFail = styled.p`
 font-size: 18px;
 font-weight: 500;
 margin: 0;
 `
-export const StyledCounterRound = styled(StyledCounterFail)`
+export const CounterRound = styled(CounterFail)`
+animation: 0.5s ${fadeInLeftAnimation};
 font-size: 24px;
 font-weight: 600;
 padding-left: 10px;

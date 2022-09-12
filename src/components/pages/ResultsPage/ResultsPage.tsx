@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { PlayButton, ResetButton, RowWrapper } from '../../../common-styles/styled';
 import { ListsWrapper, StyledOl, ResetButtonWrapper, StyledSpan } from './styled';
-import { getPartDataLocalStorage } from '../../../localStorage/localStorage';
+import { getPartData, getPartDataLocalStorage } from '../../../data/data';
 import { IDataTypes } from '../../../types/dataTypes';
 import { clearLocalStorage } from '../../../util/util';
 import Error from '../../blocks/Error/Error';
@@ -20,7 +20,9 @@ const StatisticsPage = () => {
     error,
     openedCountries,
     notOpenedCountries,
-    partData, started
+    partData,
+    started,
+    originalData
   } = useSelectors();
 
   const dispatch = useDispatch();
@@ -28,21 +30,19 @@ const StatisticsPage = () => {
   return error ? <Error error={error} /> : (
     <>
       <RowWrapper>
-        {
-          started &&
-          <Link to='/game'>
-            <PlayButton type="button">
-              <Button clickHandler={() => getPartDataLocalStorage(dispatch, partData)}>continue</Button>
-            </PlayButton>
-          </Link>
-        }
+        <Link to='/game'>
+          <PlayButton type="button">
+            {started ?
+              <Button clickHandler={() => getPartDataLocalStorage(dispatch, partData)}>continue</Button> :
+              <Button clickHandler={() => getPartData(dispatch, originalData)}>start</Button>}
+          </PlayButton>
+        </Link>
         <ResetButtonWrapper>
           <ResetButton type="button">
-            <Button clickHandler={clearLocalStorage}>restart</Button>
+            <Button clickHandler={clearLocalStorage}>reset</Button>
           </ResetButton>
         </ResetButtonWrapper>
       </RowWrapper>
-      <h3>countries: 250</h3>
       <ListsWrapper className="lists-wrapper">
         <StyledOl>
           <h3>opened: <StyledSpan>{openedCountries.length}</StyledSpan></h3>

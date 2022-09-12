@@ -2,7 +2,7 @@ import React from 'react';
 import { GlobalStyle } from './styled';
 import CountriesPage from '../pages/CountriesPage/CountriesPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AppRoute from '../../app-route/app-route';
+import AppRoute from '../../app-routes/app-routes';
 import PageWrapper from '../layout/page-wrapper/page-wrapper';
 import RulesPage from '../pages/RulesPage/RulesPage';
 import ResultsPage from '../pages/ResultsPage/ResultsPage';

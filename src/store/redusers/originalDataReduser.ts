@@ -1,5 +1,6 @@
-import { Action, ActionTypes } from '../../types/actionsTypes';
+import { Action } from '../../types/actions';
 import { IOriginalData } from '../../types/redusersTypes';
+import { ActionTypes } from '../const';
 
 const initialState: IOriginalData = {
   originalData: [],

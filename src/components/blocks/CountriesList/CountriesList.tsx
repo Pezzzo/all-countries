@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IDataTypes } from '../../../types/dataTypes';
-import { StyledImg, StyledPClosed, StyledPOpen, Wrapper } from './styled';
+import { StyledImg, StyledPClosed, StyledPOpen, Wrapper, StyledDiv } from './styled';
 import DetailCountryInfo from '../DetailCountryInfo/DetailCountryInfo';
 
 interface ICountriesName {
@@ -25,14 +25,15 @@ const CountriesList = ({ data, hover }: ICountriesName) => {
           </StyledPClosed>
         }
 
-          <Wrapper className={isActive ? 'current-country-info-active' : 'current-country-info-passive'}>
+        <Wrapper className={isActive ? 'info-active' : 'info-passive'}>
+          <StyledDiv>
             <StyledImg src={data.flags.png}
               width="200"
               height="120"
               alt="flag" />
-              <DetailCountryInfo data={data}/>
-          </Wrapper>
-
+            <DetailCountryInfo data={data} />
+          </StyledDiv>
+        </Wrapper>
       </li>
     </>
   );

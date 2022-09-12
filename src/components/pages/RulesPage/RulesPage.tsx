@@ -3,14 +3,15 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { PlayButton, RowWrapper } from '../../../common-styles/styled';
 import useSelectors from '../../../hooks/useSelectors';
-import { getPartDataLocalStorage } from '../../../localStorage/localStorage';
+import { getPartDataLocalStorage } from '../../../data/data';
 import Button from '../../ui/Button/Button';
+import { P, TextWrapper } from './styled';
 
 const RulesPage = () => {
 
   const dispatch = useDispatch();
 
-  const {partData, started} = useSelectors();
+  const { partData, started } = useSelectors();
 
   return (
     <>
@@ -24,38 +25,37 @@ const RulesPage = () => {
           </Link>
         </RowWrapper>
       }
-
-      <div>
+      <TextWrapper>
+        <h2>
+          The game consists of 10 rounds.
+        </h2>
+        <h2>
+          At the beginning of the round, given a list of 25 countries and their flags.
+        </h2>
+        <h2>
+          You must to collate the name of the country and the flag, for this you need:
+        </h2>
         <h3>
-          Игра состоит из 10 раундов
+          1. Select a country's name from the list.
         </h3>
         <h3>
-          в начале раунда выдаётся список из 25-ти стран и их флагов
+          2. Next, select the supposed flag of the selected country,and click on it.
         </h3>
-        <h3>
-          вы должны сопоставить название страны и флаг,
-          для этого нужно:
-        </h3>
-        <h4>
-          1. Выбрать название страны из списка
-        </h4>
-        <h4>
-          2. Далее выберать предпологаемый флаг страны, которую вы выбрали, и нажать на него
-        </h4>
-      </div>
-
-      <div>
-        <p>
-          При правильном сопоставлении появится окно с минимальными подробностями об этой стране
-        </p>
-        <p>
-          у вас есть определенное количество возможных промахов (право на ошибку).
-          За один раунд можно ошибиться только 5 раз, после этого он закончится.
-        </p>
-        <p>
-          текущие результы вы можете посмотреть на странице - статистика
-        </p>
-      </div>
+      </TextWrapper>
+      <TextWrapper>
+        <P>
+          If matched correctly, a window will appear with minimal details about that country.
+        </P>
+        <P>
+          You have a certain number of possible misses (right to make a mistake).
+          <br />
+          In one round, you can only make a 5 mistakes, after that it will end round.
+        </P>
+        <P>
+          On the page <strong>RESULTS</strong> you can view the actual results,
+          you can also reset all the data to start over.
+        </P>
+      </TextWrapper>
     </>
   );
 }

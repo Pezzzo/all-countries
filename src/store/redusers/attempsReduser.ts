@@ -1,5 +1,6 @@
-import { Action, ActionTypes } from '../../types/actionsTypes';
+import { Action } from '../../types/actions';
 import { IAttemptsCounterStates } from '../../types/redusersTypes';
+import { ActionTypes } from '../const';
 
 const initialState: IAttemptsCounterStates = {
   attemptСount: 5,

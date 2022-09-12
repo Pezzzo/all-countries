@@ -1,8 +1,9 @@
 import React from 'react';
-import { getPartData, getPartDataLocalStorage } from './../localStorage/localStorage';
-import { Action, ActionTypes } from '../types/actionsTypes';
+import { getPartData, getPartDataLocalStorage } from '../data/data';
+import { Action } from '../types/actions';
 import { IDataTypes } from "../types/dataTypes";
 import { Dispatch } from 'redux';
+import { ActionTypes } from '../store/const';
 
 const countryNameHandler = (
   evt: React.MouseEvent<HTMLParagraphElement>,
@@ -23,7 +24,8 @@ const countryNameHandler = (
   countryName.classList.remove('countryNameActive');
 };
 
-
+// удаление отгаданной страны из списка раунда
+// и добавление её в список открытых стран
 const getLastCountry = (
   data: IDataTypes,
   actualPartData: IDataTypes[],
@@ -53,7 +55,7 @@ const countryFlagHandler = (
   originalData: IDataTypes[],
   partData: IDataTypes[],
   attemptСount: number,
-  selectedCountry: any,
+  selectedCountry: IDataTypes,
   openedCountries: IDataTypes[],
   data: IDataTypes,
   dispatch: Dispatch<Action>): void => {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyledFooter, StyledLink, StyledLinkAutor } from './styled';
-import { logo } from '../../../assets/image';
 
 const Footer = () => {
   return (

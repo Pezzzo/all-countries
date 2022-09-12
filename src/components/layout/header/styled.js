@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
 min-height: 80px;
-padding-top: 10px;
+padding-top: 20px;
 margin-bottom: 20px;
 width: 100%;
 background-color: ${(props) => props.theme.colorWhite};

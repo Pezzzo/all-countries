@@ -25,17 +25,19 @@ height: 120px;
 `
 export const Wrapper = styled.div`
 background-color: ${(props) => props.theme.colorBlackModal10};
-transition: 0.4s;
 
-&.current-country-info-active {
+&.info-active {
   max-height: 100%;
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
+  transition: max-height 0.2s ease-out;
 }
 
-&.current-country-info-passive {
+&.info-passive {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
+  transition: max-height 0.2s ease-out;
 }
+`
+export const StyledDiv = styled.div`
+padding: 10px;
 `

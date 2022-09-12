@@ -23,7 +23,8 @@ background-color: ${(props) => props.theme.colorBlackModal};
 `
 export const StyledDiv = styled.div`
 position: relative;
-max-width: 600px;
+max-width: 500px;
+word-break: break-word;
 min-height: 400px;
 padding: 20px;
 border-radius: 10px;
@@ -31,6 +32,7 @@ background-color: ${(props) => props.theme.colorGrey};
 `
 export const ImgWrapper = styled.div`
 text-align: center;
+margin-bottom: 20px;
 `
 export const StyledImg = styled.img`
 box-shadow: 0 0 6px 2px ${(props) => props.theme.colorBlack};

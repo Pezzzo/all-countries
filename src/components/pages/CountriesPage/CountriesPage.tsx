@@ -4,8 +4,8 @@ import {
   CountriesList,
   FlagsList,
   Main,
-  StyledCounterFail,
-  StyledCounterRound,
+  CounterFail,
+  CounterRound,
   CounterWrapper,
   StyledSpan,
   InfoWrapper,
@@ -18,11 +18,9 @@ import Error from '../../blocks/Error/Error';
 import ModalCountryInfo from '../../blocks/ModalCountryInfo/ModalCountryInfo';
 import Button from '../../ui/Button/Button';
 import { useDispatch } from 'react-redux';
-import { getPartData } from '../../../localStorage/localStorage';
+import { getPartData } from '../../../data/data';
 import useSelectors from '../../../hooks/useSelectors';
 import { Link } from 'react-router-dom';
-
-
 
 const CountriesPage = () => {
 
@@ -65,13 +63,13 @@ const CountriesPage = () => {
                 </PlayButton>
                 :
                 <InfoWrapper>
-                  <StyledCounterRound>
+                  <CounterRound>
                     round: <span>{roundCount}</span>
-                  </StyledCounterRound>
+                  </CounterRound>
                   <CounterWrapper>
-                    <StyledCounterFail>
+                    <CounterFail>
                       right to fail: <StyledSpan className="counter">{attemptСount}</StyledSpan>
-                    </StyledCounterFail>
+                    </CounterFail>
                   </CounterWrapper>
                 </InfoWrapper>
             }

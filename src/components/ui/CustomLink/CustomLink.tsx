@@ -15,7 +15,8 @@ const CustomLink = ({ children, to, clickHandler}: ILink) => {
       <StyledLink onClick={clickHandler}
         to={to}
         style={{
-          backgroundColor: match ? 'rgb(125, 194, 255)' : '',
+          backgroundColor: match ? '#7dc2ff' : '',
+          boxShadow: match ? '0 0 6px 3px #add6fb' : '',
         }}>
         {children}
       </StyledLink>

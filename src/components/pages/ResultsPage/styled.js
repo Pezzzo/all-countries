@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { fadeInAnimation } from "../../../common-styles/animations";
 
 export const ListsWrapper = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr;
+animation: 1s ${fadeInAnimation};
 `
 export const StyledOl = styled.ol`
 margin: 0;

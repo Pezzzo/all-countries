@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeInAnimation } from "./animations";
 
 export const PlayButton = styled.button`
 color: ${(props) => props.theme.colorBlackText};
@@ -45,4 +46,5 @@ display: flex;
 align-items: center;
 justify-content: center;
 margin-bottom: 40px;
+animation: 1s ${fadeInAnimation};
 `
