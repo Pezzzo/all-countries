@@ -27,8 +27,8 @@ body {
   min-width: 320px;
   display: flex;
   flex-direction: column;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
   font-weight:  ${(props) => props.theme.fontWeightDefault};
   max-width: ${(props) => props.theme.pageWidth};
   font-family: ${(props) => props.theme.fontFamily};
@@ -39,10 +39,15 @@ body {
   a {
     text-decoration: none;
   }
+
+  @media ${(props) => props.theme.media.tablet} {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 
 img {
     max-width: 100%;
     height: auto;
   }
-`
+`;

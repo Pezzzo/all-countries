@@ -49,7 +49,6 @@ const getLastCountry = (
   }
 };
 
-
 const countryFlagHandler = (
   evt: React.MouseEvent<HTMLImageElement>,
   originalData: IDataTypes[],
@@ -124,4 +123,27 @@ const closeModalMouseHandler = (
   }
 };
 
-export { countryNameHandler, countryFlagHandler, closeModal, closeModalMouseHandler }
+const setOpenedCountriesVisibility = () => {
+
+  document.querySelector('.opened-countries')?.classList.remove('closed');
+  document.querySelector('.result-botton-opened')?.classList.add('result-botton-active');
+  document.querySelector('.result-botton-not-opened')?.classList.remove('result-botton-active');
+  document.querySelector('.not-opened-countries')?.classList.add('closed');
+};
+
+const setNotOpenedCountriesVisibility = () => {
+
+  document.querySelector('.result-botton-opened')?.classList.remove('result-botton-active');
+  document.querySelector('.result-botton-not-opened')?.classList.add('result-botton-active');
+  document.querySelector('.opened-countries')?.classList.add('closed');
+  document.querySelector('.not-opened-countries')?.classList.remove('closed');
+};
+
+export {
+  countryNameHandler,
+  countryFlagHandler,
+  closeModal,
+  closeModalMouseHandler,
+  setOpenedCountriesVisibility,
+  setNotOpenedCountriesVisibility
+}

@@ -13,31 +13,33 @@ transition: all 0.3s;
 &:hover {
   background-color: ${(props) => props.theme.colorLightGreen};
 }
-`
+
+@media ${(props) => props.theme.media.tablet} {
+font-size: 16px;
+line-height: 24px;
+}
+
+@media ${(props) => props.theme.media.desktop} {
+  font-size: 18px;
+  line-height: 28px;
+}
+`;
+
 export const StyledPClosed = styled(StyledPOpen)`
 &:hover {
   background-color: ${(props) => props.theme.colorLightRed};
 }
-`
+`;
+
 export const StyledImg = styled.img`
-width: 200px;
-height: 120px;
-`
+width: 180px;
+height: 100px;
+`;
+
 export const Wrapper = styled.div`
 background-color: ${(props) => props.theme.colorBlackModal10};
+`;
 
-&.info-active {
-  max-height: 100%;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-
-&.info-passive {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-`
 export const StyledDiv = styled.div`
 padding: 10px;
-`
+`;

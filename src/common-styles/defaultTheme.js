@@ -12,15 +12,20 @@ export const defaultTheme = {
     colorDarkBlue: "#56b0ff",
     colorLightGreen: "#aaefa3",
     colorGreen: "#86df7e",
+    colorDarkGreen: "#2db720",
     colorLightRed: "#ff5917d4",
     colorRed: "#ff3911",
     colorOrange: "#fc9b27",
     colorOrangeHover: "#fc7427",
     fontFamily: '"Montserrat", "Arial", sans-serif',
-    fontSizeDefault: "18px",
+    fontSizeDefault: "14px",
     lineHeightDefault: "27px",
     fontWeightDefault: "400",
     pageWidth: "1280px",
-    pagePadding: "90px",
     indent: "20px",
+    media: {
+      mobileOnly: "(max-width: 768px)",
+      tablet: "(min-width: 768px)",
+      desktop: "(min-width: 1280px)",
+    }
   }

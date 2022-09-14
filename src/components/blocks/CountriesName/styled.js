@@ -3,10 +3,11 @@ import { pulseAnimation, flipAnimation } from '../../../common-styles/animations
 
 export const StyledP = styled.p`
 margin: 0;
-line-height: 20px;
-padding: 4px 8px;
-margin-bottom: 4px;
+padding: 4px 6px;
 font-weight: 600;
+font-size: 14px;
+line-height: 14px;
+
 background-color: ${(props) => props.theme.colorWhite};
 
 &.countryNamePassive {
@@ -27,8 +28,21 @@ background-color: ${(props) => props.theme.colorWhite};
 &.rightAnswerAnimation {
   animation: 1s ${flipAnimation};
 }
-`
+
+@media ${(props) => props.theme.media.tablet} {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+@media ${(props) => props.theme.media.desktop} {
+  font-size: 18px;
+  line-height: 20px;
+}
+`;
+
 export const StyledLi = styled.li`
 display: flex;
 list-style: none;
-`
+margin-bottom: 2px;
+margin-top: 2px;
+`;

@@ -24,16 +24,18 @@ const CountriesList = ({ data, hover }: ICountriesName) => {
             {data.name.common}<span>{isActive ? '−' : '+'}</span>
           </StyledPClosed>
         }
-
-        <Wrapper className={isActive ? 'info-active' : 'info-passive'}>
-          <StyledDiv>
-            <StyledImg src={data.flags.png}
-              width="200"
-              height="120"
-              alt="flag" />
-            <DetailCountryInfo data={data} />
-          </StyledDiv>
-        </Wrapper>
+        {
+          isActive &&
+          <Wrapper>
+            <StyledDiv>
+              <StyledImg src={data.flags.png}
+                width="200"
+                height="120"
+                alt="flag" />
+              <DetailCountryInfo data={data} />
+            </StyledDiv>
+          </Wrapper>
+        }
       </li>
     </>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledFooter, StyledLink, StyledLinkAutor } from './styled';
+import { StyledFooter, StyledLink, StyledLinkAutor, Span } from './styled';
 
 const Footer = () => {
   return (
@@ -9,16 +9,16 @@ const Footer = () => {
           href="https://restcountries.com/"
           target="_blank"
           rel="noopener noreferrer">
-          restcountries.com
+          <Span>restcountries.com</Span>
         </StyledLink>
         <StyledLink
           href="https://ru.freepik.com/free-vector/illustration-of-global-icon_2687446.htm#query=map&position=5&from_view=keyword"
           target="_blank"
           rel="noopener noreferrer">
-          rawpixel.com
+          <Span>rawpixel.com</Span>
         </StyledLink>
         <StyledLinkAutor href="https://github.com/Pezzzo" target="_blank" rel="noopener noreferrer">
-          Pezzzo
+          <Span>Pezzzo</Span>
         </StyledLinkAutor>
       </StyledFooter>
     </>

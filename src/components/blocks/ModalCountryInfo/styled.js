@@ -20,23 +20,44 @@ background-color: ${(props) => props.theme.colorBlackModal};
 &.open {
   animation: 0.3s ${fadeOutAnimation};
 }
-`
+`;
+
 export const StyledDiv = styled.div`
 position: relative;
-max-width: 500px;
+margin-right: 30px;
+margin-left: 30px;
 word-break: break-word;
-min-height: 400px;
+max-width: 400px;
+min-height: 200px;
 padding: 20px;
 border-radius: 10px;
 background-color: ${(props) => props.theme.colorGrey};
-`
+
+@media ${(props) => props.theme.media.tablet} {
+  max-width: 500px;
+  min-height: 400px;
+}
+
+@media ${(props) => props.theme.media.desktop} {
+  max-width: 800px;
+  min-height: 400px;
+}
+`;
+
 export const ImgWrapper = styled.div`
 text-align: center;
 margin-bottom: 20px;
-`
+`;
+
 export const StyledImg = styled.img`
 box-shadow: 0 0 6px 2px ${(props) => props.theme.colorBlack};
-`
+max-width: 160px;
+
+@media ${(props) => props.theme.media.tablet} {
+  max-width: 300px;
+}
+`;
+
 export const CloseButton = styled.button`
 position: absolute;
 font-size: 50px;
@@ -58,4 +79,4 @@ border: none;
 &:hover {
   opacity: 0.9;
 }
-`
+`;

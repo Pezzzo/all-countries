@@ -1,6 +1,6 @@
 import React from 'react';
 import { IDataTypes } from '../../../types/dataTypes';
-import { StyledFlagsLi, Img } from './styled';
+import { Li, Img } from './styled';
 import { useDispatch } from 'react-redux';
 import { countryFlagHandler } from '../../../handlers/handlers';
 import { completeRound } from '../../../util/util';
@@ -32,7 +32,7 @@ const CountriesFlags = ({ data }: ICountriesFlags) => {
 
   return (
     <>
-      <StyledFlagsLi>
+      <Li>
         <Img className="flagActive"
           src={data.flags.png}
           width="150"
@@ -49,7 +49,7 @@ const CountriesFlags = ({ data }: ICountriesFlags) => {
             dispatch
             )}
         />
-      </StyledFlagsLi>
+      </Li>
     </>
   );
 };

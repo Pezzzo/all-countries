@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { shakeAnimation, flipAnimation } from '../../../common-styles/animations';
 
 export const Img = styled.img`
-width: 140px;
-height: 75px;
+width: 80px;
+height: 50px;
 box-shadow: 0 0 1px 1px ${(props) => props.theme.colorBlack};
 object-fit: cover;
 
@@ -30,11 +30,34 @@ object-fit: cover;
   box-shadow: 0 0 10px 4px ${(props) => props.theme.colorGreen};
   animation: 0.7s ${flipAnimation};
 }
-`
-export const StyledFlagsLi = styled.li`
+
+@media ${(props) => props.theme.media.tablet} {
+  width: 120px;
+  height: 70px;
+}
+
+@media ${(props) => props.theme.media.desktop} {
+  width: 160px;
+  height: 90px;
+}
+`;
+
+export const Li = styled.li`
 text-align: end;
-width: 170px;
-height: 100px;
-margin-bottom: 20px;
+width: 90px;
+height: 60px;
+margin-bottom: 5px;
 list-style: none;
-`
+
+@media ${(props) => props.theme.media.tablet} {
+  width: 140px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+@media ${(props) => props.theme.media.desktop} {
+  width: 190px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+`;

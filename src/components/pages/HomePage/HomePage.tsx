@@ -5,7 +5,14 @@ import { PlayButton } from '../../../common-styles/styled';
 import useSelectors from '../../../hooks/useSelectors';
 import { getPartDataLocalStorage, getPartData } from '../../../data/data';
 import Button from '../../ui/Button/Button';
-import { Main, TextWrapper, Title1, Title2, Title3, LinkWrapper } from './styled';
+import {
+  Main,
+  TextWrapper,
+  Title1,
+  Title2,
+  Title3,
+  LinkWrapper
+} from './styled';
 
 const HomePage = () => {
 
