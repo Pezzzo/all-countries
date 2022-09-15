@@ -11,7 +11,9 @@ import {
   InfoWrapper,
   BeforeWrapper,
   IntermediateWrapper,
-  P
+  P,
+  FadeButton,
+  EndRoundH2
 } from './styled';
 import CountriesFlags from '../../blocks/CountriesFlags/CountriesFlags';
 import CountriesName from '../../blocks/CountriesName/CountriesName';
@@ -37,15 +39,10 @@ const CountriesPage = () => {
     roundCount,
     started,
     originalData,
-    partData,
-    sortPartData,
     emptyArray
   } = useSelectors();
 
   const dispatch = useDispatch();
-
-  console.log(partData)
-  console.log(sortPartData)
 
   return error ? <Error error={error} /> : (
     <>{
@@ -86,12 +83,13 @@ const CountriesPage = () => {
             zeroAttempts || emptyArray ?
               <IntermediateWrapper>
                 {
-                  partData.length === 0 ?
-                  <h2>the list is empty, please open the following list</h2> :
-                  <h2>too many misses, please open the following list</h2>}
-                <PlayButton type="button">
+                  emptyArray ?
+                    <EndRoundH2>the list is empty, please open the following list</EndRoundH2> :
+                    <EndRoundH2>too many misses, please open the following list</EndRoundH2>
+                }
+                <FadeButton type="button">
                   <Button clickHandler={() => getPartData(dispatch, originalData)}>next list countries</Button>
-                </PlayButton>
+                </FadeButton>
               </IntermediateWrapper>
               :
               <ListsWrapper>

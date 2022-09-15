@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { fadeInLeftAnimation, fadeInRightAnimation, fadeInAnimation } from "../../../common-styles/animations";
+import { H2, PlayButton } from "../../../common-styles/styled";
+import {
+  fadeInLeftAnimation,
+  fadeInRightAnimation,
+  fadeInAnimation,
+  fadeInButtonAnimation,
+  fadeInTitle1Animation
+} from "../../../common-styles/animations";
 
 export const FlagsList = styled.ul`
 padding: 0;
@@ -24,24 +31,28 @@ export const CountriesList = styled.ul`
 grid-column: 1/2;
 margin: 0;
 padding: 0;
+padding-left: 10px;
 display: flex;
 flex-wrap: wrap;
 flex-direction: column;
+
+@media ${(props) => props.theme.media.tablet} {
+  padding-left: 30px;
+}
 `;
 
 export const ListsWrapper = styled.div`
 display: grid;
 grid-template-columns: 150px 1fr;
 gap-column: 40px;
-justify-items: center;
 animation: 1.5s ${fadeInAnimation};
 
 @media ${(props) => props.theme.media.tablet} {
-  grid-template-columns: 230px 1fr;
+  grid-template-columns: 250px 1fr;
 }
 
 @media ${(props) => props.theme.media.desktop} {
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 320px 1fr;
 }
 `;
 
@@ -69,12 +80,15 @@ font-size: 14px;
 font-weight: 500;
 margin: 0;
 
+
 @media ${(props) => props.theme.media.tablet} {
   font-size: 18px;
+  padding: 2px;
 }
 
 @media ${(props) => props.theme.media.desktop} {
   font-size: 22px;
+  padding: 4px;
 }
 `;
 
@@ -124,3 +138,11 @@ export const P = styled.p`
   font-size: 22px;
 }
 `;
+
+export const EndRoundH2 = styled(H2)`
+animation: 3s ${fadeInTitle1Animation};
+`
+export const FadeButton = styled(PlayButton)`
+
+animation: 2s ${fadeInButtonAnimation};
+`
