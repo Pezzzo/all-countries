@@ -11,6 +11,11 @@ interface IPartDataAction {
   payload: IDataTypes[];
 }
 
+interface ISortPartDataAction {
+  type: ActionTypes.SORT_PART_DATA;
+  payload: IDataTypes[];
+}
+
 interface IFetchAction {
   type: ActionTypes.FETCH;
 }
@@ -85,9 +90,18 @@ interface IEndAction {
   type: ActionTypes.ENDED_TRUE;
 }
 
+interface IEmptyArrayTrueAction {
+  type: ActionTypes.EMPTY_ARRAY_TRUE;
+}
+
+interface IEmptyArrayFalseAction {
+  type: ActionTypes.EMPTY_ARRAY_FALSE;
+}
+
 export type Action =
   IOriginalDataAction
   | IPartDataAction
+  | ISortPartDataAction
   | IFetchAction
   | IFetchSuccessAction
   | IFetchErrorAction
@@ -105,3 +119,5 @@ export type Action =
   | IZeroAttemptsFalseAction
   | IStartedAction
   | IEndAction
+  | IEmptyArrayTrueAction
+  | IEmptyArrayFalseAction

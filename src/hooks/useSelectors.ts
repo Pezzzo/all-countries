@@ -10,10 +10,12 @@ const useSelectors = () => {
   const { openedCountries } = useTypedSelector(state => state.openedCountries);
   const { originalData } = useTypedSelector(state => state.originalData);
   const { partData } = useTypedSelector(state => state.partData);
+  const { sortPartData } = useTypedSelector(state => state.sortPartData);
   const { roundCount } = useTypedSelector(state => state.rounds);
   const { selectedCountry } = useTypedSelector(state => state.selectedCountry);
   const { sort } = useTypedSelector(state => state.sort);
   const { zeroAttempts } = useTypedSelector(state => state.zeroAttempts);
+  const { emptyArray } = useTypedSelector(state => state.emptyArray);
 
   return {
     attemptСount,
@@ -27,10 +29,12 @@ const useSelectors = () => {
     openedCountries,
     originalData,
     partData,
+    sortPartData,
     roundCount,
     selectedCountry,
     sort,
     zeroAttempts,
+    emptyArray,
   }
 };
 

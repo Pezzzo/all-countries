@@ -16,6 +16,7 @@ const CountriesFlags = ({ data }: ICountriesFlags) => {
     selectedCountry,
     originalData,
     partData,
+    sortPartData,
     attemptСount,
     openedCountries,
     notOpenedCountries
@@ -42,6 +43,7 @@ const CountriesFlags = ({ data }: ICountriesFlags) => {
             evt,
             originalData,
             partData,
+            sortPartData,
             attemptСount,
             selectedCountry,
             openedCountries,

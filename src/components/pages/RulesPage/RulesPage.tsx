@@ -11,7 +11,7 @@ const RulesPage = () => {
 
   const dispatch = useDispatch();
 
-  const { partData, started } = useSelectors();
+  const { partData, started, sortPartData } = useSelectors();
 
   return (
     <>
@@ -20,7 +20,7 @@ const RulesPage = () => {
         <RowWrapper>
           <Link to='/game'>
             <PlayButton type="button">
-              <Button clickHandler={() => getPartDataLocalStorage(dispatch, partData)}>continue</Button>
+              <Button clickHandler={() => getPartDataLocalStorage(dispatch, partData, sortPartData)}>continue</Button>
             </PlayButton>
           </Link>
         </RowWrapper>

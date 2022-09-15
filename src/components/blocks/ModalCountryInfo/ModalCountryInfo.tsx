@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { IDataTypes } from '../../../types/dataTypes';
 import { CloseButton, ImgWrapper, ModalWrapper, StyledDiv, StyledImg } from './styled';
@@ -14,21 +14,27 @@ interface Icomponent {
 
 const ModalCountryInfo = ({ data }: Icomponent) => {
 
-  const { partData } = useSelectors();
+  const { partData, sortPartData } = useSelectors();
 
   const dispatch = useDispatch();
 
   const closeModalKeyboardHandler = () => {
-    closeModal(dispatch, partData);
-    window.removeEventListener('keydown', closeModalKeyboardHandler);
+    closeModal(dispatch, partData, sortPartData);
   };
 
-  window.addEventListener('keydown', closeModalKeyboardHandler);
+  useEffect(() => {
+    window.addEventListener('keydown', closeModalKeyboardHandler);
+
+    return () => {
+      window.removeEventListener('keydown', closeModalKeyboardHandler);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
       <ModalWrapper className="modal-wrapper closed"
-        onClick={(evt) => closeModalMouseHandler(evt, dispatch, partData)}>
+        onClick={(evt) => closeModalMouseHandler(evt, dispatch, partData, sortPartData)}>
         <StyledDiv className="modal">
           <CloseButton className="closeButton">×</CloseButton>
           <ImgWrapper>

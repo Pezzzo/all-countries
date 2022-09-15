@@ -12,6 +12,8 @@ import { selectedCountryReduser } from './selectedCountryReduser';
 import { combineReducers } from "redux";
 import { roundCounterReduser } from './roundCounterReduser';
 import { originalDataReduser } from './originalDataReduser';
+import { emptyArrayReduser } from './emptyArrayReduser';
+import { sortPartDataReduser } from './sortPartDataReduser';
 
 export const rootReduser = combineReducers({
   fetch: fetchReduser,
@@ -27,6 +29,8 @@ export const rootReduser = combineReducers({
   startEnd: startEndReduser,
   originalData: originalDataReduser,
   partData: partDataReduser,
+  sortPartData: sortPartDataReduser,
+  emptyArray: emptyArrayReduser
 })
 
 export type RootState = ReturnType<typeof rootReduser>

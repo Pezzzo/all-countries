@@ -3,7 +3,7 @@ import logo from '../../../assets/icon-github.png'
 
 export const StyledFooter = styled.footer`
 position: fixed;
-min-height: 30px;
+min-height: 40px;
 max-width: 1280px;
 width: 100%;
 bottom: 0;
@@ -17,7 +17,7 @@ z-index: 2;
 
 @media ${(props) => props.theme.media.tablet} {
   padding-right: 90px;
-  min-height: 40px;
+  min-height: 60px;
 }
 `;
 
@@ -41,7 +41,7 @@ position: relative;
 &::after {
 position: absolute;
 content: '';
-top: -2px;
+top: 2px;
 right: -14px;
 width: 20px;
 height: 20px;
@@ -50,7 +50,7 @@ background: url(${logo}) 50% 50% no-repeat;
 background-size: contain;
 
 @media ${(props) => props.theme.media.desktop} {
-  top: -6px;
+  top: -2px;
 right: -24px;
 width: 26px;
 height: 26px;

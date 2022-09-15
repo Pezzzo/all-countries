@@ -16,7 +16,7 @@ import {
 
 const HomePage = () => {
 
-  const { started, originalData, partData } = useSelectors();
+  const { started, originalData, partData, sortPartData } = useSelectors();
 
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const HomePage = () => {
             <PlayButton type="button">
               {
                 started ?
-                  <Button clickHandler={() => getPartDataLocalStorage(dispatch, partData)}>
+                  <Button clickHandler={() => getPartDataLocalStorage(dispatch, partData, sortPartData)}>
                     continue
                   </Button> :
                   <Button clickHandler={() => getPartData(dispatch, originalData)}>

@@ -7,6 +7,7 @@ export interface IRedusersStates {
   sort?: IDataTypes[];
   notSort?: IDataTypes[];
   zeroAttempts?: boolean;
+  emptyArray?: boolean;
 }
 
 export interface ISelectedCountry {
@@ -27,6 +28,10 @@ export interface IOriginalData {
 
 export interface IPartData {
   partData: IDataTypes[];
+}
+
+export interface ISortPartData {
+  sortPartData: IDataTypes[];
 }
 
 export interface IOpenedCountries {

@@ -3,14 +3,14 @@ import { PlayButton, RowWrapper, H2 } from '../../../common-styles/styled';
 import {
   CountriesList,
   FlagsList,
-  Main,
+  ListsWrapper,
   CounterFail,
   CounterRound,
   CounterWrapper,
   Span,
   InfoWrapper,
   BeforeWrapper,
-  IntermediateMain,
+  IntermediateWrapper,
   P
 } from './styled';
 import CountriesFlags from '../../blocks/CountriesFlags/CountriesFlags';
@@ -36,15 +36,21 @@ const CountriesPage = () => {
     zeroAttempts,
     roundCount,
     started,
-    originalData
+    originalData,
+    partData,
+    sortPartData,
+    emptyArray
   } = useSelectors();
 
   const dispatch = useDispatch();
 
+  console.log(partData)
+  console.log(sortPartData)
+
   return error ? <Error error={error} /> : (
     <>{
       ended ?
-        <IntermediateMain>
+        <IntermediateWrapper>
           <H2>Accept congratulations, <br />  because it was the last round!</H2>
           <P>It's time to look at the results</P>
           <Link to='/results'>
@@ -54,7 +60,7 @@ const CountriesPage = () => {
               </Button>
             </PlayButton>
           </Link>
-        </IntermediateMain>
+        </IntermediateWrapper>
         :
         <BeforeWrapper>
           <RowWrapper>
@@ -77,19 +83,18 @@ const CountriesPage = () => {
             }
           </RowWrapper>
           {
-            zeroAttempts ?
-              <IntermediateMain>
+            zeroAttempts || emptyArray ?
+              <IntermediateWrapper>
                 {
-                  attemptСount === 0 ?
-                    <h2>too many misses, please open the following list</h2> :
-                    <h2>the list is empty, please open the following list</h2>}
+                  partData.length === 0 ?
+                  <h2>the list is empty, please open the following list</h2> :
+                  <h2>too many misses, please open the following list</h2>}
                 <PlayButton type="button">
                   <Button clickHandler={() => getPartData(dispatch, originalData)}>next list countries</Button>
                 </PlayButton>
-              </IntermediateMain>
+              </IntermediateWrapper>
               :
-              <Main>
-
+              <ListsWrapper>
                 <CountriesList>
                   {notSort && notSort.map((item) => <CountriesName data={item} key={item.flag} />)}
                 </CountriesList>
@@ -98,8 +103,7 @@ const CountriesPage = () => {
                   {sort && sort.map((item) => <CountriesFlags data={item} key={item.flag} />)}
                 </FlagsList>
                 {coincidence && <ModalCountryInfo data={selectedCountry} />}
-
-              </Main>
+              </ListsWrapper>
           }
         </BeforeWrapper>
     }

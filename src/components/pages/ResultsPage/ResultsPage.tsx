@@ -31,6 +31,7 @@ const StatisticsPage = () => {
     openedCountries,
     notOpenedCountries,
     partData,
+    sortPartData,
     started,
     originalData
   } = useSelectors();
@@ -43,7 +44,7 @@ const StatisticsPage = () => {
         <Link to='/game'>
           <PlayButton type="button">
             {started ?
-              <Button clickHandler={() => getPartDataLocalStorage(dispatch, partData)}>continue</Button> :
+              <Button clickHandler={() => getPartDataLocalStorage(dispatch, partData, sortPartData)}>continue</Button> :
               <Button clickHandler={() => getPartData(dispatch, originalData)}>start</Button>}
           </PlayButton>
         </Link>

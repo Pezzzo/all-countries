@@ -29,7 +29,7 @@ flex-wrap: wrap;
 flex-direction: column;
 `;
 
-export const Main = styled.main`
+export const ListsWrapper = styled.div`
 display: grid;
 grid-template-columns: 150px 1fr;
 gap-column: 40px;
@@ -45,7 +45,7 @@ animation: 1.5s ${fadeInAnimation};
 }
 `;
 
-export const IntermediateMain = styled.main`
+export const IntermediateWrapper = styled.div`
 width: 100%;
 height: 100%;
 text-align: center;

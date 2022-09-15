@@ -29,11 +29,22 @@ const countryNameHandler = (
 const getLastCountry = (
   data: IDataTypes,
   actualPartData: IDataTypes[],
+  actualSortPartData: IDataTypes[],
   actualOpenedCountries: IDataTypes[],
   dispatch: Dispatch<Action>): void => {
 
   let newPartData: IDataTypes[] = [...actualPartData];
+  let newSortPartData: IDataTypes[] = [...actualSortPartData];
   let newOpenedAllCountries: IDataTypes[] = [...actualOpenedCountries];
+
+  for (let i = 0; i < newSortPartData.length; i++) {
+
+    if (data.name.common === newSortPartData[i].name.common) {
+      newSortPartData.splice(i, 1);
+
+      dispatch({ type: ActionTypes.SORT_PART_DATA, payload: newSortPartData });
+    }
+  }
 
   for (let i = 0; i < newPartData.length; i++) {
 
@@ -41,6 +52,7 @@ const getLastCountry = (
 
       newOpenedAllCountries.push(newPartData[i]);
       newPartData.splice(i, 1);
+
 
       dispatch({ type: ActionTypes.PART_DATA, payload: newPartData });
       dispatch({ type: ActionTypes.OPENED_COUNTRIES, payload: newOpenedAllCountries });
@@ -53,6 +65,7 @@ const countryFlagHandler = (
   evt: React.MouseEvent<HTMLImageElement>,
   originalData: IDataTypes[],
   partData: IDataTypes[],
+  sortPartData: IDataTypes[],
   attemptСount: number,
   selectedCountry: IDataTypes,
   openedCountries: IDataTypes[],
@@ -67,7 +80,7 @@ const countryFlagHandler = (
 
   if (data.name.common === selectedCountry.name.common) {
 
-    getLastCountry(selectedCountry, partData, openedCountries, dispatch);
+    getLastCountry(selectedCountry, partData, sortPartData, openedCountries, dispatch);
 
     flag.classList.add('flagPassive');
     flag.classList.remove('flagActive');
@@ -95,7 +108,7 @@ const countryFlagHandler = (
 };
 
 // закрыть модальное окно
-const closeModal = (dispatch: Dispatch<Action>, data: IDataTypes[]) => {
+const closeModal = (dispatch: Dispatch<Action>, countriesNameArr: IDataTypes[], flagsArr: IDataTypes[]) => {
   const currentFlag = document.querySelector('.rightAnswer');
   const currentName = document.querySelector('.currentCountry');
   const modalWrapper = document.querySelector('.modal-wrapper');
@@ -106,20 +119,25 @@ const closeModal = (dispatch: Dispatch<Action>, data: IDataTypes[]) => {
     currentFlag?.classList.add('rightAnswerAnimation');
     currentName?.classList.add('rightAnswerAnimation');
   }, 200);
+  if (countriesNameArr.length === 0) {
+    setTimeout(() => dispatch({ type: ActionTypes.EMPTY_ARRAY_TRUE }), 850);
+  }
   setTimeout(() => dispatch({ type: ActionTypes.COINCIDENCE_FALSE }), 200);
-  setTimeout(() => getPartDataLocalStorage(dispatch, data), 850);
+  setTimeout(() => getPartDataLocalStorage(dispatch, countriesNameArr, flagsArr), 850);
 };
 
 const closeModalMouseHandler = (
   evt: React.MouseEvent<HTMLDivElement>,
   dispatch: Dispatch<Action>,
-  data: IDataTypes[]) => {
+  countriesNameArr: IDataTypes[],
+  flagsArr: IDataTypes[]
+  ) => {
 
   const modal = (evt.target as HTMLElement).closest('.modal');
   const modalCloseButton = (evt.target as HTMLElement).closest('.closeButton');
 
   if (!modal || modalCloseButton) {
-    closeModal(dispatch, data);
+    closeModal(dispatch, countriesNameArr, flagsArr);
   }
 };
 
