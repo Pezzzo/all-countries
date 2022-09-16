@@ -7,12 +7,11 @@ import DetailCountryInfo from '../DetailCountryInfo/DetailCountryInfo';
 import useSelectors from '../../../hooks/useSelectors';
 import { closeModal, closeModalMouseHandler } from '../../../handlers/handlers';
 
-
-interface Icomponent {
+interface IModal {
   data: IDataTypes
 };
 
-const ModalCountryInfo = ({ data }: Icomponent) => {
+const ModalCountryInfo = ({ data }: IModal) => {
 
   const { partData, sortPartData } = useSelectors();
 
@@ -39,8 +38,8 @@ const ModalCountryInfo = ({ data }: Icomponent) => {
           <CloseButton className="closeButton">×</CloseButton>
           <ImgWrapper>
             <StyledImg src={data.flags.png}
-              width="320"
-              height="210"
+              width="160"
+              height="100"
               alt="flag" />
           </ImgWrapper>
           <StyledP>

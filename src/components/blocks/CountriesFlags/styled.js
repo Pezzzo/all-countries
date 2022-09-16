@@ -5,7 +5,7 @@ export const Img = styled.img`
 width: 80px;
 height: 50px;
 box-shadow: 0 0 1px 1px ${(props) => props.theme.colorBlack};
-object-fit: cover;
+object-fit: fill;
 
 &.flagActive {
   cursor: pointer;

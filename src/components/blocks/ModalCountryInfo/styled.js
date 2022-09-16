@@ -51,10 +51,13 @@ margin-bottom: 20px;
 
 export const StyledImg = styled.img`
 box-shadow: 0 0 6px 2px ${(props) => props.theme.colorBlack};
-max-width: 160px;
+width: 160px;
+height: 100px;
+object-fit: fill;
 
 @media ${(props) => props.theme.media.tablet} {
-  max-width: 300px;
+  width: 300px;
+  height: 180px;
 }
 `;
 

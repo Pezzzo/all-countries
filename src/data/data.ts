@@ -21,9 +21,6 @@ export const getPartData = (dispatch: Dispatch<Action>, data: IDataTypes[]) => {
 
   dispatchMultiple(dispatch, partData, sortData);
 
-  console.log(partData);
-  console.log(sortData);
-
   dispatch({ type: ActionTypes.COINCIDENCE_FALSE });
   dispatch({ type: ActionTypes.EMPTY_ARRAY_FALSE });
   dispatch({ type: ActionTypes.ZERO_ATTEMPTS_FALSE });

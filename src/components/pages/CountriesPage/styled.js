@@ -15,11 +15,9 @@ display: flex;
 flex-wrap: wrap;
 align-content: start;
 justify-content: center;
-max-width: 350px;
 
 @media ${(props) => props.theme.media.tablet} {
   padding-left: 30px;
-  max-width: 100%;
 }
 
 @media ${(props) => props.theme.media.desktop} {

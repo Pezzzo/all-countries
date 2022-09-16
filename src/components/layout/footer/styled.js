@@ -16,7 +16,7 @@ background-color: ${(props) => props.theme.colorWhite};
 z-index: 2;
 
 @media ${(props) => props.theme.media.tablet} {
-  padding-right: 90px;
+  padding-right: 80px;
   min-height: 60px;
 }
 `;

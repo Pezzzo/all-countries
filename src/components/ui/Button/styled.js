@@ -7,6 +7,10 @@ width: 100%;
 height: 100%;
 font-size: 14px;
 
+&:active {
+  color: ${(props) => props.theme.colorWhite};
+}
+
 @media ${(props) => props.theme.media.tablet} {
   font-size: 16px;
 }
