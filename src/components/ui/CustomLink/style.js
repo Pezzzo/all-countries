@@ -6,7 +6,7 @@ text-align: center;
 font-weight: 600;
 text-transform: uppercase;
 min-width: 120px;
-padding: 5px 10px;
+padding: 2px 10px;
 border: none;
 cursor: pointer;
 margin: 0 4px 4px 4px;

@@ -25,6 +25,7 @@ from {
 
 50% {
   opacity: 0;
+  pointer-events: none;
 }
 
 to {
