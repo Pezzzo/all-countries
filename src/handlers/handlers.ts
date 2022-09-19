@@ -11,7 +11,7 @@ const countryNameHandler = (
   dispatch: Dispatch<Action>
 ): void => {
 
-  let countryName = (evt.target as HTMLElement);
+  let countryName = (evt.target as HTMLElement).closest('.country');
 
   dispatch({ type: ActionTypes.SELECTED_COUNTRY, payload: data });
 
@@ -20,8 +20,8 @@ const countryNameHandler = (
     item.classList.add('countryNameActive');
   });
 
-  countryName.classList.add('countryNamePassive', 'currentCountry');
-  countryName.classList.remove('countryNameActive');
+  countryName?.classList.add('countryNamePassive', 'currentCountry');
+  countryName?.classList.remove('countryNameActive');
 };
 
 // удаление отгаданной страны из списка раунда
