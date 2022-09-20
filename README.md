@@ -4,7 +4,7 @@
 
 https://all-countries.vercel.app
 
-![all-countries vercel app_game (1)](https://user-images.githubusercontent.com/99753256/190593686-233ff5e2-95b1-4710-8001-dd720c40e8a4.png)
+![all-countries vercel app_game (2)](https://user-images.githubusercontent.com/99753256/191308055-15c4ce06-fe48-4637-b868-d1b9c35e7937.png)
 
 ## Разработано с использованием:
 
