@@ -37,28 +37,26 @@ const getLastCountry = (
   let newSortPartData: IDataTypes[] = [...actualSortPartData];
   let newOpenedAllCountries: IDataTypes[] = [...actualOpenedCountries];
 
-  for (let i = 0; i < newSortPartData.length; i++) {
+  newSortPartData.forEach((el: IDataTypes, index: number) => {
+    if (data.name.common === el.name.common) {
 
-    if (data.name.common === newSortPartData[i].name.common) {
-      newSortPartData.splice(i, 1);
+      newSortPartData.splice(index, 1);
 
       dispatch({ type: ActionTypes.SORT_PART_DATA, payload: newSortPartData });
     }
-  }
+  });
 
-  for (let i = 0; i < newPartData.length; i++) {
+  newPartData.forEach((el: IDataTypes, index: number) => {
+    if (data.name.common === el.name.common) {
 
-    if (data.name.common === newPartData[i].name.common) {
-
-      newOpenedAllCountries.push(newPartData[i]);
-      newPartData.splice(i, 1);
-
+      newOpenedAllCountries.push(newPartData[index]);
+      newPartData.splice(index, 1);
 
       dispatch({ type: ActionTypes.PART_DATA, payload: newPartData });
       dispatch({ type: ActionTypes.OPENED_COUNTRIES, payload: newOpenedAllCountries });
       return;
     }
-  }
+  });
 };
 
 const countryFlagHandler = (
@@ -108,20 +106,27 @@ const countryFlagHandler = (
 };
 
 // закрыть модальное окно
-const closeModal = (dispatch: Dispatch<Action>, countriesNameArr: IDataTypes[], flagsArr: IDataTypes[]) => {
+const closeModal = (
+  dispatch: Dispatch<Action>,
+  countriesNameArr: IDataTypes[],
+  flagsArr: IDataTypes[]) => {
+
   const currentFlag = document.querySelector('.rightAnswer');
   const currentName = document.querySelector('.currentCountry');
   const modalWrapper = document.querySelector('.modal-wrapper');
 
   modalWrapper?.classList.remove('closed');
   modalWrapper?.classList.add('open');
+
   setTimeout(() => {
     currentFlag?.classList.add('rightAnswerAnimation');
     currentName?.classList.add('rightAnswerAnimation');
   }, 200);
+
   if (countriesNameArr.length === 0) {
     setTimeout(() => dispatch({ type: ActionTypes.EMPTY_ARRAY_TRUE }), 850);
   }
+
   setTimeout(() => dispatch({ type: ActionTypes.COINCIDENCE_FALSE }), 200);
   setTimeout(() => getPartDataLocalStorage(dispatch, countriesNameArr, flagsArr), 850);
 };
@@ -131,7 +136,7 @@ const closeModalMouseHandler = (
   dispatch: Dispatch<Action>,
   countriesNameArr: IDataTypes[],
   flagsArr: IDataTypes[]
-  ) => {
+) => {
 
   const modal = (evt.target as HTMLElement).closest('.modal');
   const modalCloseButton = (evt.target as HTMLElement).closest('.closeButton');
@@ -141,20 +146,27 @@ const closeModalMouseHandler = (
   }
 };
 
-const setOpenedCountriesVisibility = () => {
+// переключение между списками угаданных и не угаданных стран
+const setInfoVisibility = (evt: React.MouseEvent<HTMLButtonElement>) => {
 
-  document.querySelector('.opened-countries')?.classList.remove('closed');
-  document.querySelector('.result-botton-opened')?.classList.add('result-botton-active');
-  document.querySelector('.result-botton-not-opened')?.classList.remove('result-botton-active');
-  document.querySelector('.not-opened-countries')?.classList.add('closed');
-};
+  const openedCountries = document.querySelector('.opened-countries');
+  const notOpenedCountries = document.querySelector('.not-opened-countries');
+  const openedButton = document.querySelector('.result-botton-opened');
+  const notOpenedButton = document.querySelector('.result-botton-not-opened');
 
-const setNotOpenedCountriesVisibility = () => {
+  if ((evt.target as HTMLElement).closest('.result-botton-opened')) {
+    openedCountries?.classList.remove('closed');
+    notOpenedCountries?.classList.add('closed');
+    openedButton?.classList.add('result-botton-active');
+    notOpenedButton?.classList.remove('result-botton-active');
+  }
 
-  document.querySelector('.result-botton-opened')?.classList.remove('result-botton-active');
-  document.querySelector('.result-botton-not-opened')?.classList.add('result-botton-active');
-  document.querySelector('.opened-countries')?.classList.add('closed');
-  document.querySelector('.not-opened-countries')?.classList.remove('closed');
+  if ((evt.target as HTMLElement).closest('.result-botton-not-opened')) {
+    openedCountries?.classList.add('closed');
+    notOpenedCountries?.classList.remove('closed');
+    openedButton?.classList.remove('result-botton-active');
+    notOpenedButton?.classList.add('result-botton-active');
+  }
 };
 
 export {
@@ -162,6 +174,5 @@ export {
   countryFlagHandler,
   closeModal,
   closeModalMouseHandler,
-  setOpenedCountriesVisibility,
-  setNotOpenedCountriesVisibility
+  setInfoVisibility
 }

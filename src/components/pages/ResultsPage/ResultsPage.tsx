@@ -19,7 +19,7 @@ import Error from '../../blocks/Error/Error';
 import CountriesList from '../../blocks/CountriesList/CountriesList';
 import Button from '../../ui/Button/Button';
 import useSelectors from '../../../hooks/useSelectors';
-import { setOpenedCountriesVisibility, setNotOpenedCountriesVisibility } from '../../../handlers/handlers';
+import { setInfoVisibility } from '../../../handlers/handlers';
 
 const StatisticsPage = () => {
 
@@ -58,12 +58,12 @@ const StatisticsPage = () => {
         <ButtonsWrapper>
           <ButtonOpened
             className="result-botton-opened result-botton-active"
-            onClick={setOpenedCountriesVisibility}>
+            onClick={setInfoVisibility}>
             &#10003;
           </ButtonOpened>
           <ButtonNotOpened
             className="result-botton-not-opened"
-            onClick={setNotOpenedCountriesVisibility}>
+            onClick={setInfoVisibility}>
             &#10007;
           </ButtonNotOpened>
         </ButtonsWrapper>

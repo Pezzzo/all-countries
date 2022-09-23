@@ -11,10 +11,10 @@ const clearLocalStorage = () => {
 
 // перемешать массив
 const shuffleArray = (data: IDataTypes[]) => {
-  for (let i = data.length - 1; i > 0; i--) {
-    let index = Math.floor(Math.random() * (i + 1));
-    [data[i], data[index]] = [data[index], data[i]];
-  }
+  data.forEach((el: IDataTypes, index: number) => {
+    let randomIndex = Math.floor(Math.random() * (index + 1));
+    [data[index], data[randomIndex]] = [data[randomIndex], data[index]];
+  });
   return data;
 };
 
@@ -44,6 +44,7 @@ const getLanguages = (data: IDataTypes) => {
   }
 
   let languages: string[] = [];
+
   for (const lang in data.languages) {
     languages.push(data.languages[lang]);
   }
@@ -53,9 +54,7 @@ const getLanguages = (data: IDataTypes) => {
 // получить часовые пояса
 const getTimezones = (data: IDataTypes) => {
   let timeZones: string[] = [];
-  data.timezones.forEach((item) => {
-    timeZones.push(item);
-  });
+  data.timezones.forEach(item => timeZones.push(item));
   return timeZones.join(', ');
 };
 
@@ -82,4 +81,11 @@ const completeRound = (
   }
 };
 
-export { clearLocalStorage, shuffleArray, getLanguages, getTimezones, getCurrencies, completeRound }
+export {
+  clearLocalStorage,
+  shuffleArray,
+  getLanguages,
+  getTimezones,
+  getCurrencies,
+  completeRound
+}

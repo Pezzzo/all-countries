@@ -5,8 +5,8 @@ import thunk from 'redux-thunk';
 export const saveToLocalStorage = (state: EmptyObject) => {
   try {
     localStorage.setItem('state', JSON.stringify(state));
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -14,8 +14,8 @@ export const loadFromLocalStorage = () => {
   try {
     const state = localStorage.getItem('state');
     return state ? JSON.parse(state) : undefined;
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return undefined;
   }
 };
