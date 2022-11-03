@@ -1,5 +1,4 @@
-import React from 'react';
-import { StyledLinkToMap, StyledP, StyledSpan } from '../../../common-styles/styled';
+import { StyledLinkToMap, StyledP, StyledSpan } from '../../../common-styles/common';
 import { IDataTypes } from '../../../types/dataTypes';
 import { getLanguages, getTimezones, getCurrencies } from '../../../util/util';
 
@@ -7,7 +6,7 @@ interface Icomponent {
   data: IDataTypes
 };
 
-const DetailCountryInfo = ({ data }: Icomponent) => {
+const DetailCountryInfo: React.FC<Icomponent> = ({ data }) => {
 
   return (
     <>
@@ -42,7 +41,7 @@ const DetailCountryInfo = ({ data }: Icomponent) => {
         </StyledLinkToMap>
       </StyledP>
     </>
-  );
-}
+  )
+};
 
-export default DetailCountryInfo;
+export { DetailCountryInfo };

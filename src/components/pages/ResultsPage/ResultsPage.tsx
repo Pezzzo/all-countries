@@ -1,39 +1,24 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { PlayButton, ResetButton, RowWrapper, H2 } from '../../../common-styles/styled';
-import {
-  ListsWrapper,
-  OlOpened,
-  OlClosed,
-  ResetButtonWrapper,
-  StyledSpan,
-  ButtonsWrapper,
-  ButtonOpened,
-  ButtonNotOpened
-} from './styled';
+import { PlayButton, ResetButton, RowWrapper } from '../../../common-styles/common';
+import { ResetButtonWrapper } from './styled';
 import { getPartData, getPartDataLocalStorage } from '../../../data/data';
-import { IDataTypes } from '../../../types/dataTypes';
 import { clearLocalStorage } from '../../../util/util';
-import Error from '../../blocks/Error/Error';
-import CountriesList from '../../blocks/CountriesList/CountriesList';
-import Button from '../../ui/Button/Button';
-import useSelectors from '../../../hooks/useSelectors';
-import { setInfoVisibility } from '../../../handlers/handlers';
+import { Error } from '../../blocks/Error/Error';
+import { Button } from '../../ui/Button/Button';
+import { useSelectors } from '../../../hooks/useSelectors';
+import { ResultList } from '../../blocks/ResultList/ResultList';
 
-const StatisticsPage = () => {
-
-  const OPENED = 'green';
-  const NOT_OPENED = 'red';
+const StatisticsPage: React.FC = () => {
 
   const {
     error,
-    openedCountries,
-    notOpenedCountries,
     partData,
     sortPartData,
     started,
-    originalData
+    originalData,
+    openedCountries,
+    notOpenedCountries
   } = useSelectors();
 
   const dispatch = useDispatch();
@@ -43,9 +28,15 @@ const StatisticsPage = () => {
       <RowWrapper>
         <Link to='/game'>
           <PlayButton type="button">
-            {started ?
-              <Button clickHandler={() => getPartDataLocalStorage(dispatch, partData, sortPartData)}>continue</Button> :
-              <Button clickHandler={() => getPartData(dispatch, originalData)}>start</Button>}
+            {
+              started ?
+                <Button
+                  clickHandler={() => getPartDataLocalStorage(dispatch, partData, sortPartData)}
+                >continue</Button> :
+                <Button
+                  clickHandler={() => getPartData(dispatch, originalData)}
+                >start</Button>
+            }
           </PlayButton>
         </Link>
         <ResetButtonWrapper>
@@ -54,36 +45,9 @@ const StatisticsPage = () => {
           </ResetButton>
         </ResetButtonWrapper>
       </RowWrapper>
-      <ListsWrapper>
-        <ButtonsWrapper>
-          <ButtonOpened
-            className="result-botton-opened result-botton-active"
-            onClick={setInfoVisibility}>
-            &#10003;
-          </ButtonOpened>
-          <ButtonNotOpened
-            className="result-botton-not-opened"
-            onClick={setInfoVisibility}>
-            &#10007;
-          </ButtonNotOpened>
-        </ButtonsWrapper>
-        <OlOpened className="opened-countries">
-          <H2>opened: <StyledSpan>{openedCountries.length}</StyledSpan></H2>
-          {openedCountries && openedCountries.map((item: IDataTypes) =>
-            <CountriesList
-              data={item}
-              key={item.flag}
-              hover={OPENED} />)}
-        </OlOpened>
-        <OlClosed className="not-opened-countries closed">
-          <H2>not opened: <StyledSpan>{notOpenedCountries?.length}</StyledSpan></H2>
-          {notOpenedCountries && notOpenedCountries.map((item: IDataTypes) =>
-            <CountriesList
-              data={item}
-              key={item.flag}
-              hover={NOT_OPENED} />)}
-        </OlClosed>
-      </ListsWrapper>
+      <ResultList
+        openedCountries={openedCountries}
+        notOpenedCountries={notOpenedCountries} />
     </>
   );
 }

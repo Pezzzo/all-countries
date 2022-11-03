@@ -1,5 +1,4 @@
-import React from 'react';
-import CustomLink from '../../ui/CustomLink/CustomLink';
+import { CustomLink } from '../../ui/CustomLink/CustomLink';
 import { StyledHeader, NavWrapper } from './styled';
 
 const Header = () => {
@@ -18,11 +17,11 @@ const Header = () => {
             rules
           </CustomLink>
           <CustomLink to='/results'>
-          results
+            results
           </CustomLink>
         </NavWrapper>
       </StyledHeader>
     </>
   );
 }
-export default Header;
+export { Header };

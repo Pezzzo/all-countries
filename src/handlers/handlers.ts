@@ -16,12 +16,12 @@ const countryNameHandler = (
   dispatch({ type: ActionTypes.SELECTED_COUNTRY, payload: data });
 
   document.querySelectorAll('.country').forEach((item) => {
-    item.classList.remove('countryNamePassive', 'currentCountry');
-    item.classList.add('countryNameActive');
+    item.classList.remove('countryNameActive', 'currentCountry');
+    item.classList.add('countryNamePassive');
   });
 
-  countryName?.classList.add('countryNamePassive', 'currentCountry');
-  countryName?.classList.remove('countryNameActive');
+  countryName?.classList.add('countryNameActive', 'currentCountry');
+  countryName?.classList.remove('countryNamePassive');
 };
 
 // удаление отгаданной страны из списка раунда
@@ -146,33 +146,9 @@ const closeModalMouseHandler = (
   }
 };
 
-// переключение между списками угаданных и не угаданных стран
-const setInfoVisibility = (evt: React.MouseEvent<HTMLButtonElement>) => {
-
-  const openedCountries = document.querySelector('.opened-countries');
-  const notOpenedCountries = document.querySelector('.not-opened-countries');
-  const openedButton = document.querySelector('.result-botton-opened');
-  const notOpenedButton = document.querySelector('.result-botton-not-opened');
-
-  if ((evt.target as HTMLElement).closest('.result-botton-opened')) {
-    openedCountries?.classList.remove('closed');
-    notOpenedCountries?.classList.add('closed');
-    openedButton?.classList.add('result-botton-active');
-    notOpenedButton?.classList.remove('result-botton-active');
-  }
-
-  if ((evt.target as HTMLElement).closest('.result-botton-not-opened')) {
-    openedCountries?.classList.add('closed');
-    notOpenedCountries?.classList.remove('closed');
-    openedButton?.classList.remove('result-botton-active');
-    notOpenedButton?.classList.add('result-botton-active');
-  }
-};
-
 export {
   countryNameHandler,
   countryFlagHandler,
   closeModal,
   closeModalMouseHandler,
-  setInfoVisibility
 }

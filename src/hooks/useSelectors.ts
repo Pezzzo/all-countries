@@ -38,4 +38,4 @@ const useSelectors = () => {
   }
 };
 
-export default useSelectors;
+export { useSelectors };

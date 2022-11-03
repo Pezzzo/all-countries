@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { PlayButton, RowWrapper, H2, H3, } from '../../../common-styles/styled';
-import useSelectors from '../../../hooks/useSelectors';
+import { PlayButton, RowWrapper, H2, H3, } from '../../../common-styles/common';
+import { useSelectors } from '../../../hooks/useSelectors';
 import { getPartDataLocalStorage } from '../../../data/data';
-import Button from '../../ui/Button/Button';
+import { Button } from '../../ui/Button/Button';
 import { P, TextWrapper } from './styled';
 
-const RulesPage = () => {
+const RulesPage: React.FC = () => {
 
   const dispatch = useDispatch();
 
@@ -20,7 +20,9 @@ const RulesPage = () => {
         <RowWrapper>
           <Link to='/game'>
             <PlayButton type="button">
-              <Button clickHandler={() => getPartDataLocalStorage(dispatch, partData, sortPartData)}>continue</Button>
+              <Button clickHandler={() => getPartDataLocalStorage(dispatch, partData, sortPartData)}>
+                continue
+              </Button>
             </PlayButton>
           </Link>
         </RowWrapper>

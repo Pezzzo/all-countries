@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { PlayButton } from '../../../common-styles/styled';
-import useSelectors from '../../../hooks/useSelectors';
+import { PlayButton } from '../../../common-styles/common';
+import { useSelectors } from '../../../hooks/useSelectors';
 import { getPartDataLocalStorage, getPartData } from '../../../data/data';
-import Button from '../../ui/Button/Button';
+import { Button } from '../../ui/Button/Button';
 import {
   Main,
   TextWrapper,
@@ -14,7 +14,7 @@ import {
   LinkWrapper
 } from './styled';
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
 
   const { started, originalData, partData, sortPartData } = useSelectors();
 

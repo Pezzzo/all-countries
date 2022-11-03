@@ -22,6 +22,27 @@ background-color: ${(props) => props.theme.colorLightRed};
 }
 `;
 
+export const IntermediateWrapper = styled.div`
+width: 100%;
+height: 100%;
+text-align: center;
+display: flex;
+align-items: center;
+flex-direction: column;
+`;
+
+export const RowWrapper = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 30px 30px;
+animation: 1s ${fadeInAnimation};
+
+@media ${(props) => props.theme.media.tablet} {
+  margin-bottom: 20px;
+}
+`;
+
 export const ColumnWrapper = styled.div`
 display: flex;
 flex-direction: column;
@@ -54,18 +75,6 @@ color: ${(props) => props.theme.colorDarkBlue};
 
 &:hover {
   color: ${(props) => props.theme.colorRed};
-}
-`;
-
-export const RowWrapper = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-margin: 30px 30px;
-animation: 1s ${fadeInAnimation};
-
-@media ${(props) => props.theme.media.tablet} {
-  margin-bottom: 20px;
 }
 `;
 

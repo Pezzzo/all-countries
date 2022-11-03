@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Bg from '../../../assets/home-bg.jpg'
+import { bg } from '../../../assets/images';
 import {
   fadeInAnimation,
   fadeInTitle1Animation,
@@ -11,7 +11,7 @@ export const Main = styled.main`
 position: relative;
 width: 100%;
 min-height: 100vh;
-background: url(${Bg}) 50% 200px no-repeat;
+background: url(${bg}) 50% 200px no-repeat;
 background-size: contain;
 animation: 1s ${fadeInAnimation};
 `;

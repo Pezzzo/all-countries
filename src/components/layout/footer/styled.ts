@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logo from '../../../assets/icon-github.png'
+import { logo } from "../../../assets/images";
 
 export const StyledFooter = styled.footer`
 position: fixed;

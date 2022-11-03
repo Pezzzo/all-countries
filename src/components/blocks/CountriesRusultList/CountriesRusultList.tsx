@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { IDataTypes } from '../../../types/dataTypes';
 import { StyledImg, StyledPClosed, StyledPOpen, Wrapper, StyledDiv } from './styled';
-import DetailCountryInfo from '../DetailCountryInfo/DetailCountryInfo';
+import { DetailCountryInfo } from '../DetailCountryInfo/DetailCountryInfo';
 
 interface ICountriesName {
-  data: IDataTypes
-  hover: string
+  data: IDataTypes;
+  countriesState: boolean;
 };
 
-const CountriesList = ({ data, hover }: ICountriesName) => {
+const CountriesRusultList: React.FC<ICountriesName> = ({ data, countriesState }) => {
 
   const [isActive, setIsActive] = useState(false);
 
   return (
     <>
       <li>
-        {hover === 'green' ?
+        {countriesState ?
           <StyledPOpen onClick={() => setIsActive(!isActive)}>
             {data.name.common}<span>{isActive ? '−' : '+'}</span>
           </StyledPOpen>
@@ -38,7 +38,7 @@ const CountriesList = ({ data, hover }: ICountriesName) => {
         }
       </li>
     </>
-  );
-}
+  )
+};
 
-export default CountriesList;
+export { CountriesRusultList };

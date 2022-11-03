@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import fetch from '../../../fetch/fetch';
-import useSelectors from '../../../hooks/useSelectors';
-import Loader from '../../blocks/Loader/Loader';
-import Footer from '../footer/Footer';
-import Header from '../header/Header';
+import { useSelectors } from '../../../hooks/useSelectors';
+import { Loader } from '../../blocks/Loader/Loader';
+import { Footer } from '../footer/Footer';
+import { Header } from '../header/Header';
 import { Wrapper } from './styled';
 
 const PageWrapper = () => {
@@ -28,4 +28,4 @@ const PageWrapper = () => {
     </>
   );
 }
-export default PageWrapper;
+export { PageWrapper };

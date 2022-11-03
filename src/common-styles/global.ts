@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import { defaultTheme } from './defaultTheme';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -13,7 +14,7 @@ ${normalize}
 
 html {
     min-height: 100%;
-    background-color: ${(props) => props.theme.colorWhite};
+    background-color: ${defaultTheme.colorWhite};
   }
 
 body,
@@ -29,18 +30,18 @@ body {
   flex-direction: column;
   padding-left: 10px;
   padding-right: 10px;
-  font-weight:  ${(props) => props.theme.fontWeightDefault};
-  max-width: ${(props) => props.theme.pageWidth};
-  font-family: ${(props) => props.theme.fontFamily};
-  font-size: ${(props) => props.theme.fontSizeDefault};
-  line-height: ${(props) => props.theme.lineHeightDefault};
-  color: ${(props) => props.theme.colorBlackText};
+  font-weight:  ${defaultTheme.fontWeightDefault};
+  max-width: ${defaultTheme.pageWidth};
+  font-family: ${defaultTheme.fontFamily};
+  font-size: ${defaultTheme.fontSizeDefault};
+  line-height: ${defaultTheme.lineHeightDefault};
+  color: ${defaultTheme.colorBlackText};
 
   a {
     text-decoration: none;
   }
 
-  @media ${(props) => props.theme.media.tablet} {
+  @media ${defaultTheme.media.tablet} {
     padding-left: 30px;
     padding-right: 30px;
   }

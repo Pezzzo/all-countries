@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyledFooter, StyledLink, StyledLinkAutor, Span } from './styled';
 
 const Footer = () => {
@@ -24,4 +23,4 @@ const Footer = () => {
     </>
   );
 }
-export default Footer;
+export { Footer };

@@ -4,13 +4,13 @@ import { Li, Img } from './styled';
 import { useDispatch } from 'react-redux';
 import { countryFlagHandler } from '../../../handlers/handlers';
 import { completeRound } from '../../../util/util';
-import useSelectors from '../../../hooks/useSelectors';
+import { useSelectors } from '../../../hooks/useSelectors';
 
 interface ICountriesFlags {
   data: IDataTypes
 };
 
-const CountriesFlags = ({ data }: ICountriesFlags) => {
+const CountriesFlags: React.FC<ICountriesFlags> = ({ data }) => {
 
   const {
     selectedCountry,
@@ -49,11 +49,11 @@ const CountriesFlags = ({ data }: ICountriesFlags) => {
             openedCountries,
             data,
             dispatch
-            )}
+          )}
         />
       </Li>
     </>
-  );
+  )
 };
 
-export default CountriesFlags;
+export { CountriesFlags };

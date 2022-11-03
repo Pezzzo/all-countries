@@ -8,7 +8,7 @@ interface ILink {
   to: string
 }
 
-const CustomLink = ({ children, to, clickHandler}: ILink) => {
+const CustomLink = ({ children, to, clickHandler }: ILink) => {
   const match = useMatch(to);
   return (
     <>
@@ -23,4 +23,4 @@ const CustomLink = ({ children, to, clickHandler}: ILink) => {
     </>
   );
 }
-export default CustomLink;
+export { CustomLink };

@@ -18,4 +18,4 @@ const Button = ({ children, clickHandler }: IButton) => {
     </>
   );
 }
-export default Button;
+export { Button };

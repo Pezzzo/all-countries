@@ -1,15 +1,13 @@
-import React from 'react';
-
 interface ErrorProps {
   error: string;
 };
 
-const Error = ({error}: ErrorProps) => {
+const Error: React.FC<ErrorProps> = ({ error }) => {
   return (
     <>
-    <p>{error}</p>
+      <p>{error}</p>
     </>
   );
 };
 
-export default Error;
+export { Error };

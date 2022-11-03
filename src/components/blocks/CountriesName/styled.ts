@@ -7,16 +7,15 @@ padding: 4px 6px;
 font-weight: 600;
 font-size: 14px;
 line-height: 14px;
-
 background-color: ${(props) => props.theme.colorWhite};
 
-&.countryNamePassive {
+&.countryNameActive {
   cursor: auto;
   outline: 2px solid ${(props) => props.theme.colorBlack};
   animation: 1s ${pulseAnimation} infinite;
 }
 
-&.countryNameActive {
+&.countryNamePassive {
   cursor: pointer;
   transition: 0.2s;
 
